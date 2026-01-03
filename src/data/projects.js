@@ -1,6 +1,7 @@
 import proj_1 from '../Assets/proj-1.png'
 import proj_2 from '../Assets/proj-2.png'
 import proj_3 from '../Assets/proj-3.png'
+import proj_4 from '../Assets/proj-4.png'
 
 export const projects = [
   {
@@ -19,6 +20,22 @@ export const projects = [
       demo: 'https://food-res-q.netlify.app/',
     },
     tags: ['React', 'TailwindCSS', 'Node.js', 'Express.js', 'MongoDB', 'Firebase Auth', 'Stripe', 'Recharts'],
+  },
+  {
+    title: 'Fresh Harvests – Grocery Shop Website',
+    period: 'December 2025 - December 2025',
+    bullets: [
+      'A responsive grocery shop web app with product browsing and admin inventory management.',
+      'Dynamic product listing, category-based filtering, and product details with related products.',
+      'API data fetching and caching with RTK Query, using clean response mapping for UI.',
+      'Auth (Login/Register), token storage, and protected admin CRUD (categories/products).',
+    ],
+    image: proj_4,
+    links: {
+      codeCl: 'https://github.com/samir-45/fresh-harvests',
+      demo: 'https://fresh-harvests-brown.vercel.app/',
+    },
+    tags: ['Next.js', 'TypeScript', 'Redux Toolkit', 'RTK Query', 'Tailwind CSS', 'DaisyUI', 'REST API', 'Vercel'],
   },
   {
     title: 'Eduverse – Developer Blog Platform',
