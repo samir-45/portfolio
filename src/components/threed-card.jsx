@@ -90,7 +90,7 @@ function ThreeDCard({
   } : {};
   return <div style={{
     perspective: '1000px'
-  }} className={className}>
+  }} className={`${className}`}>
       <div ref={cardRef} onMouseMove={handleMouseMove} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} style={cardStyle} className="relative bg-gray-800 rounded-2xl overflow-hidden" role="img" tabIndex={0} onFocus={handleMouseEnter} onBlur={handleMouseLeave}>
         {backgroundImage && <div className="absolute inset-0 rounded-2xl" style={backgroundStyle} aria-hidden="true" />}
 

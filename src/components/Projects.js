@@ -138,8 +138,8 @@ const Projects = () => {
                       {/* MODAL CONTENT WITH CUSTOM SCROLLBAR */}
                       <Dialog.Content className="fixed my-6 h-5/6 overflow-auto left-1/2 top-1/2 w-[90vw] max-w-2xl -translate-x-1/2 -translate-y-1/2 rounded-xl border border-border/50 bg-card/95 backdrop-blur-md p-6 shadow-2xl focus:outline-none z-50 scrollbar-thin scrollbar-thumb-rounded-full scrollbar-track-rounded-full scrollbar-thumb-primary/20 hover:scrollbar-thumb-primary/40 scrollbar-track-transparent">
 
-                        {/* Try Image */}
-                        <div className="relative h-64 sm:h-80 w-full mb-6 rounded-lg overflow-hidden">
+                        {/* Image */}
+                        <div className="relative h-64 sm:h-[330px] w-full mb-6 rounded-lg overflow-hidden">
                           <ThreeDCard className="w-full h-full p-2">
                             <img
                               src={proj.image}
