@@ -23,8 +23,8 @@ This is a personal portfolio website of Mahin Khan built with React to showcase 
 
 1. Clone the repository
    ```
-   git clone https://github.com/adityaSrivastava29/adityasrivastava29.github.io.git
-   cd adityasrivastava29.github.io
+   git clone https://github.com/samir-45/portfolio.git
+   cd samir-45.github.io
    ```
 
 2. Install dependencies
@@ -42,10 +42,6 @@ This is a personal portfolio website of Mahin Khan built with React to showcase 
 ## Deployment
 
 This portfolio is automatically deployed to GitHub Pages using GitHub Actions whenever changes are pushed to the master branch.
-
-## License
-
-MIT
 
 ## Support
 If you like this portfolio website, please consider giving it a ⭐ on GitHub! Your support is greatly appreciated.
