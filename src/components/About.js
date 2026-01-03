@@ -65,6 +65,18 @@ const About = () => {
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}>
+
+
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.1 }}
+            className="inline-block mb-4 px-3 py-1 text-sm font-medium text-primary bg-primary/10 rounded-full"
+          >
+            Welcome to my portfolio
+          </motion.div>
+
+
           <motion.h3
             className="text-3xl sm:text-4xl font-semibold tracking-tight mb-4"
             initial={{ opacity: 0, y: 20 }}
@@ -98,6 +110,8 @@ const About = () => {
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.1 }}>
+
+            
           <div className="relative group">
             {/* Enhanced glow effect */}
             <motion.div

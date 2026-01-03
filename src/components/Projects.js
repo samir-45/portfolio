@@ -1,8 +1,10 @@
+// src/components/Projects.js
 import { FaGithub, FaExternalLinkAlt } from 'react-icons/fa';
 import { projects } from '../data/projects';
 import { motion } from 'framer-motion';
 import * as Dialog from '@radix-ui/react-dialog';
 import ThreeDCard from './threed-card';
+import { Code2 } from 'lucide-react';
 
 const Projects = () => {
   return (
@@ -46,9 +48,22 @@ const Projects = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
         >
-          <h2 className="text-3xl sm:text-4xl font-semibold tracking-tight bg-gradient-to-r from-foreground to-muted-foreground bg-clip-text text-transparent">
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="inline-flex items-center gap-2 px-3 py-1 text-sm font-medium text-primary bg-primary/10 rounded-full mb-4"
+          >
+            <Code2 size={16} /> Featured Work
+          </motion.div>
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-3xl md:text-4xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-foreground to-muted-foreground"
+          >
             Projects
-          </h2>
+          </motion.h2>
         </motion.div>
 
         <div className="grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
@@ -118,20 +133,23 @@ const Projects = () => {
                       </motion.button>
                     </Dialog.Trigger>
                     <Dialog.Portal>
-                      <Dialog.Overlay className="fixed inset-0 bg-black/60 backdrop-blur-sm" />
-                      <Dialog.Content className="fixed my-6 h-5/6 overflow-auto left-1/2 top-1/2 w-[90vw] max-w-2xl -translate-x-1/2 -translate-y-1/2  rounded-xl border border-border/50 bg-card/95 backdrop-blur-md p-6 shadow-2xl focus:outline-none">
+                      <Dialog.Overlay className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50" />
+                      
+                      {/* MODAL CONTENT WITH CUSTOM SCROLLBAR */}
+                      <Dialog.Content className="fixed my-6 h-5/6 overflow-auto left-1/2 top-1/2 w-[90vw] max-w-2xl -translate-x-1/2 -translate-y-1/2 rounded-xl border border-border/50 bg-card/95 backdrop-blur-md p-6 shadow-2xl focus:outline-none z-50 scrollbar-thin scrollbar-thumb-rounded-full scrollbar-track-rounded-full scrollbar-thumb-primary/20 hover:scrollbar-thumb-primary/40 scrollbar-track-transparent">
 
                         {/* Try Image */}
-                        <ThreeDCard className="w-full h-full p-2">
-                          <img
-                            src={proj.image}
-                            alt="Description"
-                            className="w-full h-full object-cover rounded-lg"
-                          />
-                        </ThreeDCard>
+                        <div className="relative h-64 sm:h-80 w-full mb-6 rounded-lg overflow-hidden">
+                          <ThreeDCard className="w-full h-full p-2">
+                            <img
+                              src={proj.image}
+                              alt="Description"
+                              className="w-full h-full object-cover rounded-lg"
+                            />
+                          </ThreeDCard>
+                        </div>
 
-
-                        <div className='absolute top-2/3 pb-6'>
+                        <div className='pb-6'>
                           <Dialog.Title className="text-lg font-semibold bg-gradient-to-r from-foreground to-muted-foreground bg-clip-text text-transparent">
                             {proj.title}
                           </Dialog.Title>
@@ -150,7 +168,7 @@ const Projects = () => {
                               </motion.li>
                             ))}
                           </ul>
-                          <div className="mt-6 flex gap-3">
+                          <div className="mt-6 flex gap-3 flex-wrap">
                             {proj.links.codeCl && (
                               <motion.a
                                 href={proj.links.codeCl}
@@ -190,7 +208,7 @@ const Projects = () => {
                           </div>
                           <Dialog.Close asChild>
                             <motion.button
-                              className="absolute right-4 top-4 inline-flex h-8 w-8 items-center justify-center rounded-md border border-border/50 hover:bg-muted/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring transition-all duration-300"
+                              className="absolute right-4 top-4 inline-flex h-8 w-8 items-center justify-center rounded-md border border-border/50 hover:bg-muted/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring transition-all duration-300 z-50 bg-background/50 backdrop-blur-sm"
                               aria-label="Close dialog"
                               whileHover={{ scale: 1.1, rotate: 90 }}
                               whileTap={{ scale: 0.9 }}
