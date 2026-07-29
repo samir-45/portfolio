@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useEffect, useState } from 'react';
 import { Moon, Sun } from 'lucide-react';
 import { useTheme } from './theme-provider';
@@ -20,7 +22,7 @@ export function ModeToggle({ className }) {
     );
   }
 
-  const isDark = theme === 'dark' || (theme === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches);
+  const isDark = theme === 'dark' || (theme === 'system' && typeof window !== 'undefined' && window.matchMedia('(prefers-color-scheme: dark)').matches);
 
   return (
     <button
@@ -42,5 +44,3 @@ export function ModeToggle({ className }) {
     </button>
   );
 }
-
-

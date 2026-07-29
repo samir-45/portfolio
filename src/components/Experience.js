@@ -1,10 +1,13 @@
+'use client';
+
 import React from 'react';
 import { experience } from '../data/experience';
 import { motion } from 'framer-motion';
+import { Briefcase } from 'lucide-react';
 
 const Experience = () => {
   return (
-    <section id="experience" className="py-16 sm:py-20 lg:py-24 relative overflow-hidden">
+    <section id="experience" className="py-16 sm:py-20 lg:py-24 relative overflow-hidden bg-background">
       {/* Animated background elements */}
       <div className="absolute inset-0 -z-10">
         <motion.div 
@@ -36,20 +39,28 @@ const Experience = () => {
         />
       </div>
 
-      <div className="container">
+      <div className="container mx-auto px-6">
         <motion.div 
-          className="text-center mb-12"
+          className="text-center mb-16"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
         >
-          <h2 className="text-3xl sm:text-4xl font-semibold tracking-tight bg-gradient-to-r from-foreground to-muted-foreground bg-clip-text text-transparent">
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="inline-flex items-center gap-2 px-3 py-1 text-sm font-medium text-primary bg-primary/10 rounded-full mb-4"
+          >
+            <Briefcase size={16} /> Professional Career
+          </motion.div>
+          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight bg-gradient-to-r from-foreground to-muted-foreground bg-clip-text text-transparent">
             Work Experience
           </h2>
         </motion.div>
 
-        <div className="relative">
+        <div className="relative max-w-4xl mx-auto">
           {/* Timeline line */}
           <motion.div 
             className="absolute left-4 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary via-purple-500 to-pink-500"
@@ -109,14 +120,14 @@ const Experience = () => {
                         {exp.title}
                       </motion.h3>
                       <motion.p 
-                        className="text-sm text-primary font-medium"
+                        className="text-sm text-primary font-medium flex items-center gap-2"
                         whileHover={{ scale: 1.01 }}
                       >
-                        {exp.company}
+                        {exp.company} {exp.location && <span className="text-xs text-muted-foreground">({exp.location})</span>}
                       </motion.p>
                     </div>
                     <motion.span 
-                      className="text-xs text-muted-foreground bg-gradient-to-r from-muted/30 to-muted/50 px-3 py-1 rounded-full border border-border/50"
+                      className="text-xs text-muted-foreground bg-gradient-to-r from-muted/30 to-muted/50 px-3 py-1 rounded-full border border-border/50 self-start sm:self-auto"
                       whileHover={{ scale: 1.05 }}
                     >
                       {exp.period}

@@ -1,10 +1,14 @@
+'use client';
+
 // src/components/Footer.js
 import React from 'react';
 import { Linkedin, Github, Mail, ArrowUp } from 'lucide-react';
 
 const Footer = () => {
   const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    if (typeof window !== 'undefined') {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
   };
 
   return (
@@ -48,7 +52,7 @@ const Footer = () => {
         {/* Bottom Bar */}
         <div className="mt-16 pt-8 border-t border-border flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-xs text-muted-foreground text-center md:text-left">
-            &copy; {new Date().getFullYear()} Mahin Khan. Built with React & Tailwind.
+            &copy; {new Date().getFullYear()} Mahin Khan. Built with Next.js & Tailwind.
           </p>
           
           <button 

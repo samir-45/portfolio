@@ -1,15 +1,18 @@
 export const education = [
   {
-    degree: 'Higher School Certificate (HSC)',
-    institution: 'East Bengal Institution, Dhaka',
-    period: 'February 2022 - November 2024',
-    extra: null,
+    id: 1,
+    degree: 'Higher Secondary Certificate (HSC)',
+    institution: 'East Bengal Institution',
+    location: 'Dhaka, Bangladesh',
+    year: '2023 – 2024',
+    description: 'Concentrated on Science curriculum with a focus on Mathematics and Computer Science.',
   },
   {
-    degree: 'Intermediate',
-    institution: 'Harihar Singh Academy, Varanasi',
-    period: 'April 2016 - June 2017',
+    id: 2,
+    degree: 'Secondary School Certificate (SSC)',
+    institution: 'East Bengal Institution',
+    location: 'Dhaka, Bangladesh',
+    year: '2022 – 2023',
+    description: 'Completed secondary education with distinction in Science group.',
   },
 ];
-
-

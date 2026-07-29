@@ -1,9 +1,11 @@
+'use client';
+
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Download } from "lucide-react"; // Sharper icons
+import { Menu, X, Download } from "lucide-react";
+import Image from "next/image";
 import { ModeToggle } from "./theme/mode-toggle";
 import { cn } from "../lib/utils";
-import mahinLogo from "../Assets/mahin-logo.png";
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -27,6 +29,7 @@ const Header = () => {
 
   const navLinks = [
     { name: "About", id: "about" },
+    { name: "Experience", id: "experience" },
     { name: "Projects", id: "projects" },
     { name: "Skills", id: "skills" },
     { name: "Education", id: "education" },
@@ -50,11 +53,14 @@ const Header = () => {
         {/* Logo Area */}
         <button
           onClick={() => scrollToSection("about")}
-          className="relative group overflow-hidden rounded-lg"
+          className="relative group overflow-hidden rounded-lg flex items-center"
         >
-          <img
-            src={mahinLogo}
-            className="w-20 transition-transform duration-300 group-hover:scale-105 dark:invert"
+          <Image
+            src="/assets/mahin-logo.png"
+            width={80}
+            height={40}
+            priority
+            className="w-20 h-auto transition-transform duration-300 group-hover:scale-105 dark:invert"
             alt="Md Mahin Khan"
           />
         </button>

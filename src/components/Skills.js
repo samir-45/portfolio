@@ -1,8 +1,10 @@
-// src/components/Skills.js
+'use client';
+
 import React from 'react';
 import { skills } from '../data/skills';
 import { motion } from 'framer-motion';
-import { Cpu } from 'lucide-react'; // Icon for the header
+import { Cpu } from 'lucide-react';
+import Image from 'next/image';
 
 const Skills = () => {
   const skillCategories = skills.map((c) => ({ title: c.title, skills: c.items }));
@@ -63,14 +65,14 @@ const Skills = () => {
                     whileHover={{ scale: 1.05 }}
                     className="flex flex-col items-center gap-3 group"
                   >
-                    <div className="w-14 h-14 flex items-center justify-center rounded-xl bg-secondary/50 group-hover:bg-primary/10 transition-colors duration-300">
-                      <img
+                    <div className="w-14 h-14 flex items-center justify-center rounded-xl bg-secondary/50 group-hover:bg-primary/10 transition-colors duration-300 relative">
+                      <Image
                         src={skill.icon}
                         alt={skill.name}
-                        // Add 'dark:invert' here if you have black logos (like GitHub/Next.js)
-                        // You can also add a property to your data like 'invert: true'
+                        width={32}
+                        height={32}
+                        unoptimized
                         className="w-8 h-8 object-contain transition-transform duration-300 group-hover:scale-110"
-                        loading="lazy"
                       />
                     </div>
                     <span className="text-xs font-medium text-muted-foreground group-hover:text-primary transition-colors text-center">

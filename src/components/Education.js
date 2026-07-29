@@ -1,4 +1,5 @@
-// src/components/Education.js
+'use client';
+
 import React from "react";
 import { motion } from "framer-motion";
 import { GraduationCap, Calendar, MapPin } from "lucide-react";
@@ -25,7 +26,7 @@ const educationData = [
 const Education = () => {
   return (
     <section id="education" className="py-20 lg:py-24 bg-background relative overflow-hidden">
-      {/* Background Decoration (Optional) */}
+      {/* Background Decoration */}
       <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-border to-transparent" />
 
       <div className="container mx-auto px-6">

@@ -1,8 +1,11 @@
+'use client';
+
 // src/components/Contact.js
 import React, { useState } from 'react';
 import { Mail, Linkedin, Github, Send, Loader2, MessageSquare } from 'lucide-react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+
 
 const Contact = () => {
   const [formData, setFormData] = useState({

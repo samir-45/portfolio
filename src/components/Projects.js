@@ -1,10 +1,13 @@
-// src/components/Projects.js
+'use client';
+
+import React from 'react';
 import { FaGithub, FaExternalLinkAlt } from 'react-icons/fa';
 import { projects } from '../data/projects';
 import { motion } from 'framer-motion';
 import * as Dialog from '@radix-ui/react-dialog';
 import ThreeDCard from './threed-card';
 import { Code2 } from 'lucide-react';
+import Image from 'next/image';
 
 const Projects = () => {
   return (
@@ -141,10 +144,11 @@ const Projects = () => {
                         {/* Image */}
                         <div className="relative h-64 sm:h-[330px] w-full mb-6 rounded-lg overflow-hidden">
                           <ThreeDCard className="w-full h-full p-2">
-                            <img
+                            <Image
                               src={proj.image}
-                              alt="Description"
-                              className="w-full h-full object-cover rounded-lg"
+                              alt={proj.title}
+                              fill
+                              className="object-cover rounded-lg"
                             />
                           </ThreeDCard>
                         </div>

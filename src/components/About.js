@@ -1,12 +1,12 @@
+'use client';
+
 import React from 'react';
 import { FaLinkedin, FaGithub, FaEnvelope } from "react-icons/fa";
 import { BsTwitterX } from "react-icons/bs";
-
 import { ReactTyped } from 'react-typed';
-import mahinPic from '../Assets/mahin-pic.png';
+import Image from 'next/image';
 import { profile } from '../data/profile';
 import { motion } from 'framer-motion';
-// Tailwind migration: inline classes
 
 const About = () => {
   return (
@@ -66,7 +66,6 @@ const About = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}>
 
-
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -75,7 +74,6 @@ const About = () => {
           >
             Welcome to my portfolio
           </motion.div>
-
 
           <motion.h3
             className="text-3xl sm:text-4xl font-semibold tracking-tight mb-4"
@@ -89,7 +87,7 @@ const About = () => {
               backSpeed={50}
               backDelay={2000}
               loop
-              className="typed-text "
+              className="typed-text"
             />
           </motion.h3>
           {profile.bio.map((p, i) => (
@@ -111,7 +109,6 @@ const About = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.1 }}>
 
-            
           <div className="relative group">
             {/* Enhanced glow effect */}
             <motion.div
@@ -155,13 +152,13 @@ const About = () => {
             />
 
             <div className="relative w-full max-w-sm overflow-hidden rounded-xl border border-border/50 bg-card/50 backdrop-blur-sm shadow-lg group-hover:shadow-xl transition-all duration-500">
-              <motion.img
-                src={profile.image || mahinPic}
+              <Image
+                src={profile.image}
                 alt="Mahin Khan"
-                className="w-full h-auto"
-                loading="lazy"
-                whileHover={{ scale: 1.02 }}
-                transition={{ duration: 0.3 }}
+                width={400}
+                height={400}
+                priority
+                className="w-full h-auto transition-transform duration-300 group-hover:scale-105"
               />
             </div>
           </div>

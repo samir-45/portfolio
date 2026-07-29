@@ -1,30 +1,14 @@
 export const experience = [
   {
-    title: "Software Engineer",
-    company: "Cognizant, Noida",
-    period: "September 2022 - Present",
+    title: "Frontend Developer",
+    company: "SM Technology",
+    location: "Dhaka, Bangladesh",
+    period: "Jan 2026 – Present",
     bullets: [
-      "Spearheaded development of scalable REST APIs (Express.js), increasing API performance by 40% and reducing response time by 50ms.",
-      "Designed reusable React components, improving developer productivity by 25%.",
-      "Improved code quality with SonarQube; reduced technical debt and improved maintainability.",
-      "Managed builds with AWS CodeBuild and streamlined deployments.",
-      "Built comprehensive unit tests using Mocha and Jest achieving 95% coverage.",
+      "Led front-end development for 10+ client projects end-to-end from Figma handoff through deployment — using React, Next.js, and TypeScript.",
+      "Built and shipped responsive e-commerce platforms and admin dashboards that received client sign-off on first review, reducing revision cycles.",
+      "Collaborated inside a 15-person cross-functional team (frontend, backend, mobile, UI/UX) using agile ceremonies (sprint planning, standups, retros).",
+      "Profiled and optimized application performance (bundle size, re-renders, load time) and resolved UI/UX defects reported in QA and client review.",
     ],
-  },
-  {
-    title: "Genc Next Intern",
-    company: "Cognizant, Noida",
-    period: "February 2022 - September 2022",
-    bullets: [
-      "Trained on Full Stack Java development",
-      "Worked on Springboot application with relational databases such as MySQL",
-      "Created Springboot Microservices and deployed on AWS",
-    ],
-  },
-  {
-    title: "Software Engineer Intern",
-    company: "Apisero, Noida",
-    period: "August 2022 - October 2022",
-    bullets: [],
   },
 ];

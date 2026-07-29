@@ -1,7 +1,9 @@
-// src/components/Certifications.js
+'use client';
+
 import React from "react";
 import { motion } from "framer-motion";
 import { Award } from "lucide-react";
+import Image from "next/image";
 
 const certificationsData = [
   {
@@ -34,12 +36,10 @@ const certificationsData = [
     title: "IELTS Certification",
     issuer: "British Council",
     date: "November 2025",
-    // Standard British Council logo
     logo: "https://iconlogovector.com/uploads/images/2024/12/lg-67616c4372dec-British-Council.webp", 
-    link: "#", // Add your verification link if you have one, or remove this line
+    link: "#",
   },
 ];
-
 
 const Certifications = () => {
   return (
@@ -79,11 +79,13 @@ const Certifications = () => {
               className="group relative flex flex-col items-center p-6 bg-card border border-border rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1 text-center"
             >
               {/* Logo container */}
-              <div className="w-20 h-20 mb-4 rounded-full bg-secondary/50 flex items-center justify-center p-4 group-hover:scale-110 transition-transform duration-300">
-                <img
+              <div className="w-20 h-20 mb-4 rounded-full bg-secondary/50 flex items-center justify-center p-4 group-hover:scale-110 transition-transform duration-300 relative">
+                <Image
                   src={cert.logo}
                   alt={cert.issuer}
-                  // CONDITIONAL CLASS: Only invert if the flag is true
+                  width={48}
+                  height={48}
+                  unoptimized
                   className={`w-full h-full object-contain ${
                     cert.invertDark ? "dark:invert-[20%]" : ""
                   }`}
@@ -102,15 +104,6 @@ const Certifications = () => {
                   {cert.date}
                 </p>
               </div>
-
-              {/* <a
-                href={cert.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-auto inline-flex items-center gap-2 text-sm font-medium text-primary hover:underline underline-offset-4"
-              >
-                View Certificate <ExternalLink size={14} />
-              </a> */}
             </motion.div>
           ))}
         </div>
