@@ -10,27 +10,27 @@ const Experience = () => {
     <section id="experience" className="py-16 sm:py-20 lg:py-24 relative overflow-hidden bg-background">
       {/* Animated background elements */}
       <div className="absolute inset-0 -z-10">
-        <motion.div 
+        <motion.div
           className="absolute top-10 right-10 w-40 h-40 bg-gradient-to-r from-blue-500/5 to-purple-500/5 rounded-full blur-xl"
-          animate={{ 
+          animate={{
             x: [0, -20, 0],
             y: [0, 20, 0],
             scale: [1, 1.1, 1]
           }}
-          transition={{ 
+          transition={{
             duration: 10,
             repeat: Infinity,
             ease: "easeInOut"
           }}
         />
-        <motion.div 
+        <motion.div
           className="absolute bottom-10 left-10 w-32 h-32 bg-gradient-to-r from-pink-500/5 to-orange-500/5 rounded-full blur-lg"
-          animate={{ 
+          animate={{
             x: [0, 30, 0],
             y: [0, -30, 0],
             scale: [1, 0.9, 1]
           }}
-          transition={{ 
+          transition={{
             duration: 8,
             repeat: Infinity,
             ease: "easeInOut",
@@ -40,7 +40,7 @@ const Experience = () => {
       </div>
 
       <div className="container mx-auto px-6">
-        <motion.div 
+        <motion.div
           className="text-center mb-16"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -62,7 +62,7 @@ const Experience = () => {
 
         <div className="relative max-w-4xl mx-auto">
           {/* Timeline line */}
-          <motion.div 
+          <motion.div
             className="absolute left-4 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary via-purple-500 to-pink-500"
             initial={{ scaleY: 0 }}
             whileInView={{ scaleY: 1 }}
@@ -81,7 +81,7 @@ const Experience = () => {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
               >
                 {/* Timeline dot */}
-                <motion.div 
+                <motion.div
                   className="absolute left-2 top-0 w-4 h-4 bg-gradient-to-r from-primary to-purple-500 rounded-full border-2 border-background shadow-lg"
                   initial={{ scale: 0 }}
                   whileInView={{ scale: 1 }}
@@ -91,52 +91,52 @@ const Experience = () => {
                 />
 
                 {/* Floating accent */}
-                <motion.div 
+                <motion.div
                   className="absolute -top-1 -right-1 w-3 h-3 bg-gradient-to-r from-pink-500 to-orange-500 rounded-full opacity-60"
-                  animate={{ 
+                  animate={{
                     scale: [1, 1.3, 1],
                     opacity: [0.6, 0.9, 0.6]
                   }}
-                  transition={{ 
+                  transition={{
                     duration: 2,
                     repeat: Infinity,
                     ease: "easeInOut"
                   }}
                 />
 
-                <motion.div 
+                <motion.div
                   className="rounded-xl border border-border/50 bg-card/50 backdrop-blur-sm p-6 shadow-lg hover:shadow-xl transition-all duration-500 hover:-translate-y-1"
-                  whileHover={{ 
+                  whileHover={{
                     scale: 1.01,
                     boxShadow: "0 20px 40px rgba(0,0,0,0.1)"
                   }}
                 >
                   <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-4">
                     <div>
-                      <motion.h3 
+                      <motion.h3
                         className="text-lg font-semibold bg-gradient-to-r from-foreground to-muted-foreground bg-clip-text text-transparent"
                         whileHover={{ scale: 1.02 }}
                       >
                         {exp.title}
                       </motion.h3>
-                      <motion.p 
+                      <motion.p
                         className="text-sm text-primary font-medium flex items-center gap-2"
                         whileHover={{ scale: 1.01 }}
                       >
                         {exp.company} {exp.location && <span className="text-xs text-muted-foreground">({exp.location})</span>}
                       </motion.p>
                     </div>
-                    <motion.span 
+                    <motion.span
                       className="text-xs text-muted-foreground bg-gradient-to-r from-muted/30 to-muted/50 px-3 py-1 rounded-full border border-border/50 self-start sm:self-auto"
                       whileHover={{ scale: 1.05 }}
                     >
                       {exp.period}
                     </motion.span>
                   </div>
-                  
+
                   <ul className="space-y-2">
                     {exp.bullets.map((bullet, bulletIndex) => (
-                      <motion.li 
+                      <motion.li
                         key={bulletIndex}
                         className="text-sm text-muted-foreground leading-relaxed flex items-start gap-2"
                         initial={{ opacity: 0, x: -10 }}
@@ -144,7 +144,7 @@ const Experience = () => {
                         viewport={{ once: true }}
                         transition={{ delay: (index * 0.1) + (bulletIndex * 0.05) }}
                       >
-                        <motion.div 
+                        <motion.div
                           className="w-1.5 h-1.5 bg-gradient-to-r from-primary to-purple-500 rounded-full mt-2 flex-shrink-0"
                           whileHover={{ scale: 1.5 }}
                         />
