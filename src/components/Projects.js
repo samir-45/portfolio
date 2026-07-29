@@ -6,342 +6,297 @@ import { projects } from '../data/projects';
 import { motion } from 'framer-motion';
 import * as Dialog from '@radix-ui/react-dialog';
 import ThreeDCard from './threed-card';
-import { Code2, Video } from 'lucide-react';
+import { Code2, Video, ExternalLink, Play } from 'lucide-react';
 import Image from 'next/image';
 
 const Projects = () => {
   return (
-    <section id="projects" className="py-16 sm:py-20 lg:py-24 relative overflow-hidden">
-      {/* Animated background elements */}
-      <div className="absolute inset-0 -z-10">
-        <motion.div
-          className="absolute top-20 right-20 w-48 h-48 bg-gradient-to-r from-blue-500/5 to-purple-500/5 rounded-full blur-2xl"
-          animate={{
-            x: [0, 30, 0],
-            y: [0, -30, 0],
-            scale: [1, 1.2, 1]
-          }}
-          transition={{
-            duration: 12,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
-        />
-        <motion.div
-          className="absolute bottom-10 left-10 w-32 h-32 bg-gradient-to-r from-pink-500/5 to-orange-500/5 rounded-full blur-xl"
-          animate={{
-            x: [0, -20, 0],
-            y: [0, 20, 0],
-            scale: [1, 0.8, 1]
-          }}
-          transition={{
-            duration: 8,
-            repeat: Infinity,
-            ease: "easeInOut",
-            delay: 3
-          }}
-        />
-      </div>
-
+    <section id="projects" className="py-16 sm:py-20 lg:py-24 relative">
       <div className="container mx-auto px-6">
         <motion.div
-          className="text-center mb-12"
+          className="text-center mb-16"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
         >
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="inline-flex items-center gap-2 px-3 py-1 text-sm font-medium text-primary bg-primary/10 rounded-full mb-4"
-          >
-            <Code2 size={16} /> Featured Work
-          </motion.div>
-          <motion.h2 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-3xl md:text-4xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-foreground to-muted-foreground"
-          >
-            Projects
-          </motion.h2>
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 text-sm font-medium text-primary bg-primary/10 rounded-full mb-4 border border-primary/20">
+            <Code2 size={16} /> Portfolio Showcase
+          </div>
+          <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-4">
+            Featured Projects
+          </h2>
+          <p className="text-muted-foreground max-w-2xl mx-auto">
+            Production-grade web applications, investment platforms, and full-stack solutions.
+          </p>
         </motion.div>
 
-        <div className="grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
-          {projects.map((proj, idx) => (
-            <motion.div
-              key={idx}
-              className="group relative rounded-xl border border-border/50 bg-card/50 backdrop-blur-sm p-6 shadow-lg hover:shadow-xl transition-all duration-500 hover:-translate-y-3 flex flex-col justify-between"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: idx * 0.1 }}
-              whileHover={{
-                scale: 1.02,
-                boxShadow: "0 25px 50px rgba(0,0,0,0.15)"
-              }}
-            >
-              {/* Floating accent */}
+        {/* Clean Bento Grid Layout */}
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 auto-rows-[minmax(0,1fr)]">
+          {projects.map((proj, idx) => {
+            const isHero = idx === 0; // iRendity gets 2-column Bento Hero treatment
+
+            return (
               <motion.div
-                className="absolute -top-3 -right-3 w-6 h-6 bg-gradient-to-r from-primary to-purple-500 rounded-full opacity-70"
-                animate={{
-                  scale: [1, 1.3, 1],
-                  opacity: [0.7, 0.9, 0.7]
-                }}
-                transition={{
-                  duration: 3,
-                  repeat: Infinity,
-                  ease: "easeInOut"
-                }}
-              />
-
-              {/* Glow effect on hover */}
-              <motion.div
-                className="absolute inset-0 bg-gradient-to-r from-primary/5 to-purple-500/5 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
-                animate={{
-                  scale: [1, 1.05, 1],
-                  opacity: [0, 0.1, 0]
-                }}
-                transition={{
-                  duration: 4,
-                  repeat: Infinity,
-                  ease: "easeInOut"
-                }}
-              />
-
-              <div className="relative z-10 flex flex-col h-full justify-between">
-                <div>
-                  {/* Project Image Banner on Card */}
-                  <div className="relative h-44 sm:h-48 w-full mb-4 overflow-hidden rounded-lg border border-border/50 bg-muted/20">
-                    <Image
-                      src={proj.image}
-                      alt={proj.title}
-                      fill
-                      sizes="(max-width: 768px) 100vw, 400px"
-                      className="object-cover object-top transition-transform duration-500 group-hover:scale-105"
-                    />
-                  </div>
-
-                  <div className="flex items-start justify-between gap-4 mb-3">
+                key={idx}
+                className={`group relative rounded-2xl border border-border bg-card p-6 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between overflow-hidden min-h-[520px] ${
+                  isHero
+                    ? 'md:col-span-2 lg:col-span-2 min-h-[580px]'
+                    : 'md:col-span-1 lg:col-span-1'
+                }`}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: idx * 0.1 }}
+              >
+                <Dialog.Root>
+                  <div className="relative z-10 flex flex-col h-full justify-between">
                     <div>
-                      <motion.h3
-                        className="text-xl font-semibold bg-gradient-to-r from-foreground to-muted-foreground bg-clip-text text-transparent"
-                        whileHover={{ scale: 1.02 }}
-                      >
-                        {proj.title}
-                      </motion.h3>
-                      <p className="mt-1 text-xs text-muted-foreground">
-                        <strong>Period:</strong> {proj.period}
-                      </p>
-                    </div>
-                    <Dialog.Root>
+                      {/* Top Pill / Badge Header */}
+                      <div className="flex items-center justify-between gap-2 mb-4">
+                        {isHero ? (
+                          <span className="inline-flex items-center gap-1.5 px-3 py-1 text-xs font-semibold text-primary bg-primary/10 rounded-full border border-primary/20">
+                            Featured Project
+                          </span>
+                        ) : (
+                          <span className="text-xs font-medium text-muted-foreground">
+                            {proj.period}
+                          </span>
+                        )}
+
+                        <Dialog.Trigger asChild>
+                          <button
+                            className="inline-flex items-center gap-1 text-xs font-semibold text-primary hover:underline transition-all cursor-pointer"
+                            aria-label={`View details for ${proj.title}`}
+                          >
+                            Details <ExternalLink size={12} />
+                          </button>
+                        </Dialog.Trigger>
+                      </div>
+
+                      {/* Project Image Banner on Card - CLICKABLE TO OPEN MODAL */}
                       <Dialog.Trigger asChild>
-                        <motion.button
-                          className="inline-flex h-8 items-center rounded-md border border-border/50 px-3 text-xs bg-gradient-to-r from-primary/10 to-purple-500/10 hover:from-primary/20 hover:to-purple-500/20 text-foreground transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring hover:scale-105 flex-shrink-0"
-                          aria-label={`View details for ${proj.title}`}
-                          whileHover={{ scale: 1.05 }}
-                          whileTap={{ scale: 0.95 }}
+                        <div
+                          className={`relative w-full mb-5 overflow-hidden rounded-xl border border-border bg-muted/20 cursor-pointer group/img ${
+                            isHero ? 'h-56 sm:h-64 lg:h-72' : 'h-52'
+                          }`}
                         >
-                          Details
-                        </motion.button>
+                          <Image
+                            src={proj.image}
+                            alt={proj.title}
+                            fill
+                            sizes={isHero ? '(max-width: 1024px) 100vw, 800px' : '(max-width: 768px) 100vw, 400px'}
+                            className="object-cover object-top transition-transform duration-500 group-hover/img:scale-105"
+                          />
+
+                          {/* Overlay Zoom Hint Icon on Hover */}
+                          <div className="absolute inset-0 bg-black/20 opacity-0 group-hover/img:opacity-100 transition-opacity duration-300 flex items-center justify-center pointer-events-none">
+                            <span className="px-3 py-1.5 rounded-full bg-background/80 backdrop-blur-sm text-xs font-semibold text-foreground border border-border/50 shadow-md">
+                              Click for Details
+                            </span>
+                          </div>
+
+                          {/* Prominent Video Badge Overlay on Thumbnail */}
+                          {proj.links.video && (
+                            <a
+                              href={proj.links.video}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              onClick={(e) => e.stopPropagation()}
+                              className="absolute top-3 right-3 inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-red-600 hover:bg-red-700 text-white text-xs font-bold shadow-lg backdrop-blur-sm transition-all hover:scale-105 z-20"
+                            >
+                              <Play size={12} className="fill-current" /> Walkthrough Video
+                            </a>
+                          )}
+                        </div>
                       </Dialog.Trigger>
-                      <Dialog.Portal>
-                        <Dialog.Overlay className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50" />
-                        
-                        {/* MODAL CONTENT WITH FIT-CONTENT HEIGHT & SCROLLBAR */}
-                        <Dialog.Content className="fixed max-h-[85vh] overflow-y-auto left-1/2 top-1/2 w-[90vw] max-w-2xl -translate-x-1/2 -translate-y-1/2 rounded-xl border border-border/50 bg-card/95 backdrop-blur-md p-6 shadow-2xl focus:outline-none z-50 scrollbar-thin scrollbar-thumb-rounded-full scrollbar-track-rounded-full scrollbar-thumb-primary/20 hover:scrollbar-thumb-primary/40 scrollbar-track-transparent">
 
-                          {/* Interactive 3D Tilt Image inside Modal */}
-                          <div className="relative h-64 sm:h-[300px] w-full mb-6 rounded-lg overflow-hidden border border-border/50 shadow-inner">
-                            <ThreeDCard className="w-full h-full">
-                              <div className="relative w-full h-full min-h-[250px] sm:min-h-[290px]">
-                                <Image
-                                  src={proj.image}
-                                  alt={proj.title}
-                                  fill
-                                  sizes="(max-width: 768px) 100vw, 700px"
-                                  className="object-cover object-top rounded-lg"
-                                  priority
-                                />
-                              </div>
-                            </ThreeDCard>
-                          </div>
+                      <h3 className={`font-bold mb-3 text-foreground ${isHero ? 'text-2xl' : 'text-xl'}`}>
+                        {proj.title}
+                      </h3>
 
-                          <div>
-                            <Dialog.Title className="text-lg font-semibold bg-gradient-to-r from-foreground to-muted-foreground bg-clip-text text-transparent">
-                              {proj.title}
-                            </Dialog.Title>
-                            <Dialog.Description className="text-sm text-muted-foreground mt-1">
-                              {proj.period}
-                            </Dialog.Description>
-                            <ul className="mt-4 list-disc pl-5 space-y-2 text-sm text-muted-foreground">
-                              {proj.bullets.map((b, i) => (
-                                <motion.li
-                                  key={i}
-                                  initial={{ opacity: 0, x: -10 }}
-                                  animate={{ opacity: 1, x: 0 }}
-                                  transition={{ delay: i * 0.1 }}
-                                >
-                                  {b}
-                                </motion.li>
-                              ))}
-                            </ul>
-                            <div className="mt-6 flex gap-3 flex-wrap">
-                              {proj.links.codeCl && (
-                                <motion.a
-                                  href={proj.links.codeCl}
-                                  className="inline-flex items-center gap-2 rounded-md border border-border/50 px-4 py-2 text-sm bg-gradient-to-r from-primary/10 to-purple-500/10 hover:from-primary/20 hover:to-purple-500/20 transition-all duration-300"
-                                  target="_blank"
-                                  rel="noopener noreferrer"
-                                  whileHover={{ scale: 1.05 }}
-                                  whileTap={{ scale: 0.95 }}
-                                >
-                                  <FaGithub /> View client Code
-                                </motion.a>
-                              )}
-                              {proj.links.codeSv && (
-                                <motion.a
-                                  href={proj.links.codeSv}
-                                  className="inline-flex items-center gap-2 rounded-md border border-border/50 px-4 py-2 text-sm bg-gradient-to-r from-primary/10 to-purple-500/10 hover:from-primary/20 hover:to-purple-500/20 transition-all duration-300"
-                                  target="_blank"
-                                  rel="noopener noreferrer"
-                                  whileHover={{ scale: 1.05 }}
-                                  whileTap={{ scale: 0.95 }}
-                                >
-                                  <FaGithub /> View server Code
-                                </motion.a>
-                              )}
-                              {proj.links.demo && (
-                                <motion.a
-                                  href={proj.links.demo}
-                                  className="inline-flex items-center gap-2 rounded-md border border-border/50 px-4 py-2 text-sm bg-gradient-to-r from-primary/10 to-purple-500/10 hover:from-primary/20 hover:to-purple-500/20 transition-all duration-300"
-                                  target="_blank"
-                                  rel="noopener noreferrer"
-                                  whileHover={{ scale: 1.05 }}
-                                  whileTap={{ scale: 0.95 }}
-                                >
-                                  <FaExternalLinkAlt /> Live Demo
-                                </motion.a>
-                              )}
-                              {proj.links.video && (
-                                <motion.a
-                                  href={proj.links.video}
-                                  className="inline-flex items-center gap-2 rounded-md border border-border/50 px-4 py-2 text-sm bg-gradient-to-r from-red-500/10 to-pink-500/10 hover:from-red-500/20 hover:to-pink-500/20 text-foreground transition-all duration-300"
-                                  target="_blank"
-                                  rel="noopener noreferrer"
-                                  whileHover={{ scale: 1.05 }}
-                                  whileTap={{ scale: 0.95 }}
-                                >
-                                  <Video size={16} className="text-red-500" /> Walkthrough Video
-                                </motion.a>
-                              )}
-                            </div>
-                            <Dialog.Close asChild>
-                              <motion.button
-                                className="absolute right-4 top-4 inline-flex h-8 w-8 items-center justify-center rounded-md border border-border/50 hover:bg-muted/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring transition-all duration-300 z-50 bg-background/50 backdrop-blur-sm"
-                                aria-label="Close dialog"
-                                whileHover={{ scale: 1.1, rotate: 90 }}
-                                whileTap={{ scale: 0.9 }}
-                              >
-                                ×
-                              </motion.button>
-                            </Dialog.Close>
-                          </div>
+                      {/* Key Highlights Bullet Points List directly on Card */}
+                      <ul className="text-sm text-muted-foreground leading-relaxed space-y-2 mb-6">
+                        {proj.bullets.slice(0, isHero ? 3 : 2).map((bullet, bIdx) => (
+                          <li key={bIdx} className="flex items-start gap-2">
+                            <span className="text-primary font-bold mt-1 text-xs flex-shrink-0">•</span>
+                            <span>{bullet}</span>
+                          </li>
+                        ))}
+                      </ul>
 
-                        </Dialog.Content>
-                      </Dialog.Portal>
-                    </Dialog.Root>
+                      {/* Full Tech Stack Pills List */}
+                      <div className="flex flex-wrap gap-1.5 mb-6">
+                        {proj.tags.map((tag, tIdx) => (
+                          <span
+                            key={tIdx}
+                            className="px-2.5 py-0.5 text-xs font-medium bg-secondary/80 text-secondary-foreground rounded-md border border-border/40"
+                          >
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* Prominent Quick Action Links at Bottom */}
+                    <div className="pt-4 border-t border-border flex flex-wrap items-center justify-between gap-3">
+                      <div className="flex items-center gap-2.5 flex-wrap">
+                        {proj.links.demo && (
+                          <a
+                            href={proj.links.demo}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-primary text-primary-foreground text-xs font-bold shadow-sm hover:bg-primary/90 hover:scale-105 transition-all"
+                          >
+                            Live Demo <FaExternalLinkAlt size={10} />
+                          </a>
+                        )}
+
+                        {proj.links.video && (
+                          <a
+                            href={proj.links.video}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-red-500/10 border border-red-500/30 text-red-500 hover:bg-red-500/20 text-xs font-bold transition-all hover:scale-105 shadow-sm"
+                          >
+                            <Play size={12} className="fill-current" /> Walkthrough Video
+                          </a>
+                        )}
+                      </div>
+
+                      <div className="flex items-center gap-2">
+                        {proj.links.codeCl && (
+                          <a
+                            href={proj.links.codeCl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="p-2 rounded-lg border border-border hover:bg-secondary text-muted-foreground hover:text-foreground transition-colors"
+                            title="Client Code"
+                          >
+                            <FaGithub size={16} />
+                          </a>
+                        )}
+                        {proj.links.codeSv && (
+                          <a
+                            href={proj.links.codeSv}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="p-2 rounded-lg border border-border hover:bg-secondary text-muted-foreground hover:text-foreground transition-colors"
+                            title="Server Code"
+                          >
+                            <FaGithub size={16} />
+                          </a>
+                        )}
+                      </div>
+                    </div>
                   </div>
 
-                  <ul className="mt-4 list-disc pl-5 space-y-2 text-sm text-muted-foreground">
-                    {proj.bullets.slice(0, 2).map((b, i) => (
-                      <motion.li
-                        key={i}
-                        initial={{ opacity: 0, x: -10 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: (idx * 0.1) + (i * 0.1) }}
-                      >
-                        {b}
-                      </motion.li>
-                    ))}
-                  </ul>
+                  {/* MODAL PORTAL */}
+                  <Dialog.Portal>
+                    <Dialog.Overlay className="fixed inset-0 bg-black/70 backdrop-blur-md z-50" />
+                    <Dialog.Content className="fixed max-h-[85vh] overflow-y-auto left-1/2 top-1/2 w-[92vw] max-w-3xl -translate-x-1/2 -translate-y-1/2 rounded-2xl border border-border bg-card p-6 sm:p-8 shadow-2xl focus:outline-none z-50 scrollbar-thin scrollbar-thumb-primary/20 scrollbar-track-transparent">
 
-                  {proj.tags && (
-                    <div className="flex flex-wrap gap-2 mt-4">
-                      {proj.tags.map((t, i) => (
-                        <motion.span
-                          key={i}
-                          className="inline-flex items-center rounded-md border border-border/50 px-2 py-1 text-[11px] text-muted-foreground bg-gradient-to-r from-muted/30 to-muted/50"
-                          initial={{ opacity: 0, scale: 0.8 }}
-                          whileInView={{ opacity: 1, scale: 1 }}
-                          viewport={{ once: true }}
-                          transition={{ delay: (idx * 0.1) + (i * 0.05) }}
-                          whileHover={{ scale: 1.05 }}
-                        >
-                          {t}
-                        </motion.span>
-                      ))}
-                    </div>
-                  )}
-                </div>
+                      {/* Modal 3D Image Banner */}
+                      <div className="relative h-64 sm:h-[320px] w-full mb-6 rounded-xl overflow-hidden border border-border shadow-inner">
+                        <ThreeDCard className="w-full h-full">
+                          <div className="relative w-full h-full min-h-[260px] sm:min-h-[300px]">
+                            <Image
+                              src={proj.image}
+                              alt={proj.title}
+                              fill
+                              sizes="(max-width: 768px) 100vw, 800px"
+                              className="object-cover object-top rounded-xl"
+                              priority
+                            />
+                          </div>
+                        </ThreeDCard>
+                      </div>
 
-                {/* Quick Links Pinned to Bottom */}
-                <div className="flex gap-2 mt-6 flex-wrap pt-4 border-t border-border/30">
-                  {proj.links.codeCl && (
-                    <motion.a
-                      href={proj.links.codeCl}
-                      className="inline-flex items-center gap-2 rounded-md border border-border/50 px-2.5 py-1.5 text-xs bg-gradient-to-r from-primary/10 to-purple-500/10 hover:from-primary/20 hover:to-purple-500/20 transition-all duration-300"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                    >
-                      <FaGithub /> client Code
-                    </motion.a>
-                  )}
-                  {proj.links.codeSv && (
-                    <motion.a
-                      href={proj.links.codeSv}
-                      className="inline-flex items-center gap-2 rounded-md border border-border/50 px-2.5 py-1.5 text-xs bg-gradient-to-r from-primary/10 to-purple-500/10 hover:from-primary/20 hover:to-purple-500/20 transition-all duration-300"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                    >
-                      <FaGithub /> server Code
-                    </motion.a>
-                  )}
-                  {proj.links.demo && (
-                    <motion.a
-                      href={proj.links.demo}
-                      className="inline-flex items-center gap-2 rounded-md border border-border/50 px-2.5 py-1.5 text-xs bg-gradient-to-r from-primary/10 to-purple-500/10 hover:from-primary/20 hover:to-purple-500/20 transition-all duration-300"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                    >
-                      <FaExternalLinkAlt /> Live Demo
-                    </motion.a>
-                  )}
-                  {proj.links.video && (
-                    <motion.a
-                      href={proj.links.video}
-                      className="inline-flex items-center gap-2 rounded-md border border-border/50 px-2.5 py-1.5 text-xs bg-gradient-to-r from-red-500/10 to-pink-500/10 hover:from-red-500/20 hover:to-pink-500/20 transition-all duration-300"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                    >
-                      <Video size={14} className="text-red-500" /> Walkthrough Video
-                    </motion.a>
-                  )}
-                </div>
-              </div>
-            </motion.div>
-          ))}
+                      <div>
+                        <Dialog.Title className="text-2xl font-bold text-foreground">
+                          {proj.title}
+                        </Dialog.Title>
+                        <Dialog.Description className="text-sm text-muted-foreground mt-1 font-medium">
+                          {proj.period}
+                        </Dialog.Description>
+
+                        <ul className="mt-4 list-disc pl-5 space-y-2.5 text-sm text-muted-foreground leading-relaxed">
+                          {proj.bullets.map((b, i) => (
+                            <li key={i}>{b}</li>
+                          ))}
+                        </ul>
+
+                        {/* Tech Stack Pills in Modal */}
+                        <div className="mt-6 flex flex-wrap gap-2">
+                          {proj.tags.map((tag, tIdx) => (
+                            <span
+                              key={tIdx}
+                              className="px-2.5 py-1 text-xs font-medium bg-secondary text-secondary-foreground rounded-md"
+                            >
+                              {tag}
+                            </span>
+                          ))}
+                        </div>
+
+                        {/* Action Links in Modal */}
+                        <div className="mt-6 flex gap-3 flex-wrap pt-4 border-t border-border">
+                          {proj.links.demo && (
+                            <a
+                              href={proj.links.demo}
+                              className="inline-flex items-center gap-2 rounded-lg bg-primary px-4 py-2.5 text-sm font-semibold text-primary-foreground shadow hover:bg-primary/90 transition-colors"
+                              target="_blank"
+                              rel="noopener noreferrer"
+                            >
+                              <FaExternalLinkAlt size={13} /> Live Demo
+                            </a>
+                          )}
+                          {proj.links.video && (
+                            <a
+                              href={proj.links.video}
+                              className="inline-flex items-center gap-2 rounded-lg bg-red-500/10 border border-red-500/30 text-red-500 hover:bg-red-500/20 px-4 py-2.5 text-sm font-bold transition-colors shadow-sm"
+                              target="_blank"
+                              rel="noopener noreferrer"
+                            >
+                              <Play size={14} className="fill-current" /> Walkthrough Video
+                            </a>
+                          )}
+                          {proj.links.codeCl && (
+                            <a
+                              href={proj.links.codeCl}
+                              className="inline-flex items-center gap-2 rounded-lg border border-border px-4 py-2.5 text-sm font-medium hover:bg-accent transition-colors"
+                              target="_blank"
+                              rel="noopener noreferrer"
+                            >
+                              <FaGithub /> Client Code
+                            </a>
+                          )}
+                          {proj.links.codeSv && (
+                            <a
+                              href={proj.links.codeSv}
+                              className="inline-flex items-center gap-2 rounded-lg border border-border px-4 py-2.5 text-sm font-medium hover:bg-accent transition-colors"
+                              target="_blank"
+                              rel="noopener noreferrer"
+                            >
+                              <FaGithub /> Server Code
+                            </a>
+                          )}
+                        </div>
+
+                        <Dialog.Close asChild>
+                          <button
+                            className="absolute right-4 top-4 inline-flex h-8 w-8 items-center justify-center rounded-lg border border-border bg-background hover:bg-accent text-foreground transition-colors z-50 font-bold"
+                            aria-label="Close dialog"
+                          >
+                            ×
+                          </button>
+                        </Dialog.Close>
+                      </div>
+                    </Dialog.Content>
+                  </Dialog.Portal>
+                </Dialog.Root>
+              </motion.div>
+            );
+          })}
         </div>
       </div>
     </section>

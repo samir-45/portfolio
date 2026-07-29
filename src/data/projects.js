@@ -4,9 +4,9 @@ export const projects = [
     period: 'Jan 2026 - Present',
     bullets: [
       'A premium investment platform for acquiring leased properties with defined yields and active contracts.',
+      'Integrated an AI assistant to automate property inquiries and deliver personalized investor guidance, cutting manual response overhead.',
       'Built an investment dashboard with real-time yield analytics (Recharts) and interactive property maps (Leaflet) for a multi-role platform (Admin / Agency / Investor).',
       'Implemented JWT-based role-based access control (RBAC) governing complex property lifecycle states across three distinct user roles.',
-      'Integrated an AI assistant to automate property inquiries and deliver personalized investor guidance, cutting manual response overhead.',
     ],
     image: '/assets/irendity.webp',
     links: {

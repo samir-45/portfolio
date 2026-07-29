@@ -2,9 +2,8 @@
 
 // src/components/Contact.js
 import React, { useState } from 'react';
-import { Mail, Linkedin, Github, Send, Loader2, MessageSquare } from 'lucide-react';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { Mail, Linkedin, Github, Send, Loader2, MessageSquare, Copy, Check } from 'lucide-react';
+import toast from 'react-hot-toast';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -45,27 +44,17 @@ const Contact = () => {
       const data = await response.json();
 
       if (response.ok && (data.success === "true" || data.success === true)) {
-        toast.success('Message sent successfully! I will get back to you soon.', {
-          position: "top-right",
-          autoClose: 5000,
-          hideProgressBar: false,
-          theme: "colored"
-        });
+        toast.success('Message sent successfully! I will get back to you soon.');
         setFormData({ name: '', email: '', message: '' });
       } else if (data.message && data.message.includes("Activation")) {
-        toast.info('Form activation link sent! Please check your email inbox.', {
-          position: "top-right",
-          autoClose: 8000,
-          theme: "colored"
+        toast('Form activation link sent! Please check your email inbox.', {
+          icon: '📩',
         });
       } else {
         throw new Error(data.message || 'Failed to submit');
       }
     } catch (error) {
-      toast.error('Something went wrong. Please try again or email directly.', {
-        position: "top-right",
-        theme: "colored"
-      });
+      toast.error('Something went wrong. Please try again or email directly.');
     } finally {
       setIsSubmitting(false);
     }
@@ -100,12 +89,9 @@ const Contact = () => {
             </div>
 
             <div className="space-y-6">
-              <ContactItem 
-                icon={<Mail size={20} />}
-                label="Email"
-                value="mdmahinkhan621@gmail.com"
-                href="mailto:mdmahinkhan621@gmail.com"
-              />
+              {/* Special Email Contact Card with 1-Click Copy Button */}
+              <EmailContactItem email="mdmahinkhan621@gmail.com" />
+
               <ContactItem 
                 icon={<Linkedin size={20} />}
                 label="LinkedIn"
@@ -185,12 +171,60 @@ const Contact = () => {
           </div>
         </div>
       </div>
-      <ToastContainer />
     </section>
   );
 };
 
-// Helper Component for cleaner code
+// Specialized Email Item with 1-Click Copy Button
+const EmailContactItem = ({ email }) => {
+  const [copied, setCopied] = useState(false);
+
+  const handleCopy = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    navigator.clipboard.writeText(email);
+    setCopied(true);
+    toast.success('Email copied to clipboard!');
+    setTimeout(() => setCopied(false), 2500);
+  };
+
+  return (
+    <div className="flex items-center justify-between p-4 rounded-lg bg-secondary/30 hover:bg-secondary/60 transition-colors group">
+      <a 
+        href={`mailto:${email}`}
+        className="flex items-start gap-4 flex-1 min-w-0"
+      >
+        <div className="flex-shrink-0 w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary group-hover:scale-110 transition-transform">
+          <Mail size={20} />
+        </div>
+        <div className="min-w-0 flex-1">
+          <p className="text-sm font-medium text-muted-foreground mb-0.5">Email</p>
+          <p className="font-semibold text-foreground group-hover:text-primary transition-colors truncate">{email}</p>
+        </div>
+      </a>
+
+      <button
+        onClick={handleCopy}
+        className="ml-3 flex-shrink-0 inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md border border-border bg-card hover:bg-primary/10 hover:border-primary/40 text-xs font-semibold transition-all duration-200"
+        title="Copy Email Address"
+      >
+        {copied ? (
+          <>
+            <Check size={14} className="text-primary" />
+            <span className="text-primary">Copied!</span>
+          </>
+        ) : (
+          <>
+            <Copy size={14} className="text-muted-foreground group-hover:text-primary" />
+            <span>Copy</span>
+          </>
+        )}
+      </button>
+    </div>
+  );
+};
+
+// Helper Component for standard links
 const ContactItem = ({ icon, label, value, href }) => (
   <a 
     href={href}
