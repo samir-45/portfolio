@@ -15,12 +15,21 @@ export const metadata = {
     description: 'Explore my projects, skills, and professional experience in modern web development.',
     url: 'https://mahin-portfolio-site.netlify.app/',
     siteName: 'Md Mahin Khan Portfolio',
+    images: [
+      {
+        url: '/og-image.png',
+        width: 1200,
+        height: 630,
+        alt: 'Md Mahin Khan - Web Developer Portfolio',
+      },
+    ],
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Md Mahin Khan - Web Developer Portfolio',
     description: 'Explore my projects, skills, and professional experience in modern web development.',
+    images: ['/og-image.png'],
   },
   robots: {
     index: true,
