@@ -6,7 +6,6 @@ import { Mail, Linkedin, Github, Send, Loader2, MessageSquare } from 'lucide-rea
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-
 const Contact = () => {
   const [formData, setFormData] = useState({
     name: '',
@@ -28,17 +27,24 @@ const Contact = () => {
     setIsSubmitting(true);
     
     try {
-      // Using FormSubmit.co service
+      // Using FormSubmit.co service bound to mdmahinkhan621@gmail.com
       const response = await fetch('https://formsubmit.co/ajax/mdmahinkhan621@gmail.com', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
           'Accept': 'application/json'
         },
-        body: JSON.stringify(formData)
+        body: JSON.stringify({
+          ...formData,
+          _subject: `New Portfolio Message from ${formData.name}`,
+          _url: "https://mahin-portfolio-site.netlify.app/",
+          _captcha: "false"
+        })
       });
 
-      if (response.ok) {
+      const data = await response.json();
+
+      if (response.ok && (data.success === "true" || data.success === true)) {
         toast.success('Message sent successfully! I will get back to you soon.', {
           position: "top-right",
           autoClose: 5000,
@@ -46,11 +52,17 @@ const Contact = () => {
           theme: "colored"
         });
         setFormData({ name: '', email: '', message: '' });
+      } else if (data.message && data.message.includes("Activation")) {
+        toast.info('Form activation link sent! Please check your email inbox.', {
+          position: "top-right",
+          autoClose: 8000,
+          theme: "colored"
+        });
       } else {
-        throw new Error('Failed to submit');
+        throw new Error(data.message || 'Failed to submit');
       }
     } catch (error) {
-      toast.error('Something went wrong. Please try again later.', {
+      toast.error('Something went wrong. Please try again or email directly.', {
         position: "top-right",
         theme: "colored"
       });

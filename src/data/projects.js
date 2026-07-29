@@ -8,9 +8,10 @@ export const projects = [
       'Implemented JWT-based role-based access control (RBAC) governing complex property lifecycle states across three distinct user roles.',
       'Integrated an AI assistant to automate property inquiries and deliver personalized investor guidance, cutting manual response overhead.',
     ],
-    image: '/assets/dev.png',
+    image: '/assets/irendity.png',
     links: {
-      demo: '#',
+      demo: 'https://irendity-frontend.vercel.app/',
+      video: 'https://drive.google.com/file/d/1FIgazdi72Ej7cTtd83utqg9mLGTQzPq_/view?usp=sharing',
     },
     tags: ['Next.js', 'TypeScript', 'Redux', 'RTK Query', 'Tailwind CSS', 'Ant Design', 'Stripe', 'AI', 'Leaflet Maps'],
   },

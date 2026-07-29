@@ -2,24 +2,24 @@ import './globals.css';
 import { Providers } from './providers';
 
 export const metadata = {
-  title: 'Mahin Khan | Web Developer & Full-Stack Engineer',
-  description: "Welcome to Mahin Khan's portfolio website. Explore my projects, technical skills, certifications, and professional experience.",
-  keywords: ['Mahin Khan', 'Mahin', 'Web Developer', 'Frontend Developer', 'Full Stack Developer', 'MERN Stack Developer', 'Portfolio'],
-  authors: [{ name: 'Mahin Khan', url: 'https://mahin.in' }],
-  metadataBase: new URL('https://mahin.in'),
+  title: 'Md Mahin Khan | Web Developer & Full-Stack Engineer',
+  description: "Welcome to Md Mahin Khan's portfolio website. Explore my projects, technical skills, certifications, and professional experience.",
+  keywords: ['Md Mahin Khan', 'Mahin Khan', 'Web Developer', 'Frontend Developer', 'Full Stack Developer', 'React.js', 'Next.js', 'TypeScript', 'Portfolio'],
+  authors: [{ name: 'Md Mahin Khan', url: 'https://mahin-portfolio-site.netlify.app/' }],
+  metadataBase: new URL('https://mahin-portfolio-site.netlify.app/'),
   alternates: {
-    canonical: 'https://mahin.in',
+    canonical: 'https://mahin-portfolio-site.netlify.app/',
   },
   openGraph: {
-    title: 'Mahin Khan - Web Developer Portfolio',
+    title: 'Md Mahin Khan - Web Developer Portfolio',
     description: 'Explore my projects, skills, and professional experience in modern web development.',
-    url: 'https://mahin.in',
-    siteName: 'Mahin Khan Portfolio',
+    url: 'https://mahin-portfolio-site.netlify.app/',
+    siteName: 'Md Mahin Khan Portfolio',
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Mahin Khan - Web Developer Portfolio',
+    title: 'Md Mahin Khan - Web Developer Portfolio',
     description: 'Explore my projects, skills, and professional experience in modern web development.',
   },
   robots: {
@@ -31,22 +31,22 @@ export const metadata = {
 const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'Person',
-  name: 'Mahin Khan',
-  url: 'https://mahin.in',
+  name: 'Md Mahin Khan',
+  url: 'https://mahin-portfolio-site.netlify.app/',
   sameAs: [
     'https://github.com/samir-45',
     'https://www.linkedin.com/in/devmahin',
     'https://x.com/mdmahinkhan621',
   ],
-  jobTitle: 'Web Developer',
-  description: 'Portfolio website of Mahin Khan, Web Developer. Projects, skills, experience, and contact information.',
+  jobTitle: 'Frontend Developer',
+  description: 'Portfolio website of Md Mahin Khan, Frontend & Full-Stack Developer.',
 };
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        <link rel="icon" href="/Logoo.png" />
+        <link rel="icon" href="/assets/mahin-logo.png" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
         <script
           type="application/ld+json"

@@ -6,7 +6,7 @@ import { projects } from '../data/projects';
 import { motion } from 'framer-motion';
 import * as Dialog from '@radix-ui/react-dialog';
 import ThreeDCard from './threed-card';
-import { Code2 } from 'lucide-react';
+import { Code2, Video } from 'lucide-react';
 import Image from 'next/image';
 
 const Projects = () => {
@@ -43,7 +43,7 @@ const Projects = () => {
         />
       </div>
 
-      <div className="container">
+      <div className="container mx-auto px-6">
         <motion.div
           className="text-center mb-12"
           initial={{ opacity: 0, y: 20 }}
@@ -73,7 +73,7 @@ const Projects = () => {
           {projects.map((proj, idx) => (
             <motion.div
               key={idx}
-              className="group relative rounded-xl border border-border/50 bg-card/50 backdrop-blur-sm p-6 shadow-lg hover:shadow-xl transition-all duration-500 hover:-translate-y-3"
+              className="group relative rounded-xl border border-border/50 bg-card/50 backdrop-blur-sm p-6 shadow-lg hover:shadow-xl transition-all duration-500 hover:-translate-y-3 flex flex-col justify-between"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -99,7 +99,7 @@ const Projects = () => {
 
               {/* Glow effect on hover */}
               <motion.div
-                className="absolute inset-0 bg-gradient-to-r from-primary/5 to-purple-500/5 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                className="absolute inset-0 bg-gradient-to-r from-primary/5 to-purple-500/5 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
                 animate={{
                   scale: [1, 1.05, 1],
                   opacity: [0, 0.1, 0]
@@ -111,159 +111,189 @@ const Projects = () => {
                 }}
               />
 
-              <div className="relative z-10">
-                <div className="flex items-start justify-between gap-4 mb-4">
-                  <div>
-                    <motion.h3
-                      className="text-xl font-semibold bg-gradient-to-r from-foreground to-muted-foreground bg-clip-text text-transparent"
-                      whileHover={{ scale: 1.02 }}
-                    >
-                      {proj.title}
-                    </motion.h3>
-                    <p className="mt-1 text-xs text-muted-foreground">
-                      <strong>Period:</strong> {proj.period}
-                    </p>
+              <div className="relative z-10 flex flex-col h-full justify-between">
+                <div>
+                  {/* Project Image Banner on Card */}
+                  <div className="relative h-44 sm:h-48 w-full mb-4 overflow-hidden rounded-lg border border-border/50 bg-muted/20">
+                    <Image
+                      src={proj.image}
+                      alt={proj.title}
+                      fill
+                      sizes="(max-width: 768px) 100vw, 400px"
+                      className="object-cover object-top transition-transform duration-500 group-hover:scale-105"
+                    />
                   </div>
-                  <Dialog.Root>
-                    <Dialog.Trigger asChild>
-                      <motion.button
-                        className="inline-flex h-8 items-center rounded-md border border-border/50 px-3 text-xs bg-gradient-to-r from-primary/10 to-purple-500/10 hover:from-primary/20 hover:to-purple-500/20 text-foreground transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring hover:scale-105"
-                        aria-label={`View details for ${proj.title}`}
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
+
+                  <div className="flex items-start justify-between gap-4 mb-3">
+                    <div>
+                      <motion.h3
+                        className="text-xl font-semibold bg-gradient-to-r from-foreground to-muted-foreground bg-clip-text text-transparent"
+                        whileHover={{ scale: 1.02 }}
                       >
-                        Details
-                      </motion.button>
-                    </Dialog.Trigger>
-                    <Dialog.Portal>
-                      <Dialog.Overlay className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50" />
-                      
-                      {/* MODAL CONTENT WITH CUSTOM SCROLLBAR */}
-                      <Dialog.Content className="fixed my-6 h-5/6 overflow-auto left-1/2 top-1/2 w-[90vw] max-w-2xl -translate-x-1/2 -translate-y-1/2 rounded-xl border border-border/50 bg-card/95 backdrop-blur-md p-6 shadow-2xl focus:outline-none z-50 scrollbar-thin scrollbar-thumb-rounded-full scrollbar-track-rounded-full scrollbar-thumb-primary/20 hover:scrollbar-thumb-primary/40 scrollbar-track-transparent">
+                        {proj.title}
+                      </motion.h3>
+                      <p className="mt-1 text-xs text-muted-foreground">
+                        <strong>Period:</strong> {proj.period}
+                      </p>
+                    </div>
+                    <Dialog.Root>
+                      <Dialog.Trigger asChild>
+                        <motion.button
+                          className="inline-flex h-8 items-center rounded-md border border-border/50 px-3 text-xs bg-gradient-to-r from-primary/10 to-purple-500/10 hover:from-primary/20 hover:to-purple-500/20 text-foreground transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring hover:scale-105 flex-shrink-0"
+                          aria-label={`View details for ${proj.title}`}
+                          whileHover={{ scale: 1.05 }}
+                          whileTap={{ scale: 0.95 }}
+                        >
+                          Details
+                        </motion.button>
+                      </Dialog.Trigger>
+                      <Dialog.Portal>
+                        <Dialog.Overlay className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50" />
+                        
+                        {/* MODAL CONTENT WITH FIT-CONTENT HEIGHT & SCROLLBAR */}
+                        <Dialog.Content className="fixed max-h-[85vh] overflow-y-auto left-1/2 top-1/2 w-[90vw] max-w-2xl -translate-x-1/2 -translate-y-1/2 rounded-xl border border-border/50 bg-card/95 backdrop-blur-md p-6 shadow-2xl focus:outline-none z-50 scrollbar-thin scrollbar-thumb-rounded-full scrollbar-track-rounded-full scrollbar-thumb-primary/20 hover:scrollbar-thumb-primary/40 scrollbar-track-transparent">
 
-                        {/* Image */}
-                        <div className="relative h-64 sm:h-[330px] w-full mb-6 rounded-lg overflow-hidden">
-                          <ThreeDCard className="w-full h-full p-2">
-                            <Image
-                              src={proj.image}
-                              alt={proj.title}
-                              fill
-                              className="object-cover rounded-lg"
-                            />
-                          </ThreeDCard>
-                        </div>
-
-                        <div className='pb-6'>
-                          <Dialog.Title className="text-lg font-semibold bg-gradient-to-r from-foreground to-muted-foreground bg-clip-text text-transparent">
-                            {proj.title}
-                          </Dialog.Title>
-                          <Dialog.Description className="text-sm text-muted-foreground mt-1">
-                            {proj.period}
-                          </Dialog.Description>
-                          <ul className="mt-4 list-disc pl-5 space-y-2 text-sm text-muted-foreground">
-                            {proj.bullets.map((b, i) => (
-                              <motion.li
-                                key={i}
-                                initial={{ opacity: 0, x: -10 }}
-                                animate={{ opacity: 1, x: 0 }}
-                                transition={{ delay: i * 0.1 }}
-                              >
-                                {b}
-                              </motion.li>
-                            ))}
-                          </ul>
-                          <div className="mt-6 flex gap-3 flex-wrap">
-                            {proj.links.codeCl && (
-                              <motion.a
-                                href={proj.links.codeCl}
-                                className="inline-flex items-center gap-2 rounded-md border border-border/50 px-4 py-2 text-sm bg-gradient-to-r from-primary/10 to-purple-500/10 hover:from-primary/20 hover:to-purple-500/20 transition-all duration-300"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                whileHover={{ scale: 1.05 }}
-                                whileTap={{ scale: 0.95 }}
-                              >
-                                <FaGithub /> View client Code
-                              </motion.a>
-                            )}
-                            {proj.links.codeSv && (
-                              <motion.a
-                                href={proj.links.codeSv}
-                                className="inline-flex items-center gap-2 rounded-md border border-border/50 px-4 py-2 text-sm bg-gradient-to-r from-primary/10 to-purple-500/10 hover:from-primary/20 hover:to-purple-500/20 transition-all duration-300"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                whileHover={{ scale: 1.05 }}
-                                whileTap={{ scale: 0.95 }}
-                              >
-                                <FaGithub /> View server Code
-                              </motion.a>
-                            )}
-                            {proj.links.demo && (
-                              <motion.a
-                                href={proj.links.demo}
-                                className="inline-flex items-center gap-2 rounded-md border border-border/50 px-4 py-2 text-sm bg-gradient-to-r from-primary/10 to-purple-500/10 hover:from-primary/20 hover:to-purple-500/20 transition-all duration-300"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                whileHover={{ scale: 1.05 }}
-                                whileTap={{ scale: 0.95 }}
-                              >
-                                <FaExternalLinkAlt /> Live Demo
-                              </motion.a>
-                            )}
+                          {/* Interactive 3D Tilt Image inside Modal */}
+                          <div className="relative h-64 sm:h-[300px] w-full mb-6 rounded-lg overflow-hidden border border-border/50 shadow-inner">
+                            <ThreeDCard className="w-full h-full">
+                              <div className="relative w-full h-full min-h-[250px] sm:min-h-[290px]">
+                                <Image
+                                  src={proj.image}
+                                  alt={proj.title}
+                                  fill
+                                  sizes="(max-width: 768px) 100vw, 700px"
+                                  className="object-cover object-top rounded-lg"
+                                  priority
+                                />
+                              </div>
+                            </ThreeDCard>
                           </div>
-                          <Dialog.Close asChild>
-                            <motion.button
-                              className="absolute right-4 top-4 inline-flex h-8 w-8 items-center justify-center rounded-md border border-border/50 hover:bg-muted/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring transition-all duration-300 z-50 bg-background/50 backdrop-blur-sm"
-                              aria-label="Close dialog"
-                              whileHover={{ scale: 1.1, rotate: 90 }}
-                              whileTap={{ scale: 0.9 }}
-                            >
-                              ×
-                            </motion.button>
-                          </Dialog.Close>
-                        </div>
 
-                      </Dialog.Content>
-                    </Dialog.Portal>
-                  </Dialog.Root>
+                          <div>
+                            <Dialog.Title className="text-lg font-semibold bg-gradient-to-r from-foreground to-muted-foreground bg-clip-text text-transparent">
+                              {proj.title}
+                            </Dialog.Title>
+                            <Dialog.Description className="text-sm text-muted-foreground mt-1">
+                              {proj.period}
+                            </Dialog.Description>
+                            <ul className="mt-4 list-disc pl-5 space-y-2 text-sm text-muted-foreground">
+                              {proj.bullets.map((b, i) => (
+                                <motion.li
+                                  key={i}
+                                  initial={{ opacity: 0, x: -10 }}
+                                  animate={{ opacity: 1, x: 0 }}
+                                  transition={{ delay: i * 0.1 }}
+                                >
+                                  {b}
+                                </motion.li>
+                              ))}
+                            </ul>
+                            <div className="mt-6 flex gap-3 flex-wrap">
+                              {proj.links.codeCl && (
+                                <motion.a
+                                  href={proj.links.codeCl}
+                                  className="inline-flex items-center gap-2 rounded-md border border-border/50 px-4 py-2 text-sm bg-gradient-to-r from-primary/10 to-purple-500/10 hover:from-primary/20 hover:to-purple-500/20 transition-all duration-300"
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  whileHover={{ scale: 1.05 }}
+                                  whileTap={{ scale: 0.95 }}
+                                >
+                                  <FaGithub /> View client Code
+                                </motion.a>
+                              )}
+                              {proj.links.codeSv && (
+                                <motion.a
+                                  href={proj.links.codeSv}
+                                  className="inline-flex items-center gap-2 rounded-md border border-border/50 px-4 py-2 text-sm bg-gradient-to-r from-primary/10 to-purple-500/10 hover:from-primary/20 hover:to-purple-500/20 transition-all duration-300"
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  whileHover={{ scale: 1.05 }}
+                                  whileTap={{ scale: 0.95 }}
+                                >
+                                  <FaGithub /> View server Code
+                                </motion.a>
+                              )}
+                              {proj.links.demo && (
+                                <motion.a
+                                  href={proj.links.demo}
+                                  className="inline-flex items-center gap-2 rounded-md border border-border/50 px-4 py-2 text-sm bg-gradient-to-r from-primary/10 to-purple-500/10 hover:from-primary/20 hover:to-purple-500/20 transition-all duration-300"
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  whileHover={{ scale: 1.05 }}
+                                  whileTap={{ scale: 0.95 }}
+                                >
+                                  <FaExternalLinkAlt /> Live Demo
+                                </motion.a>
+                              )}
+                              {proj.links.video && (
+                                <motion.a
+                                  href={proj.links.video}
+                                  className="inline-flex items-center gap-2 rounded-md border border-border/50 px-4 py-2 text-sm bg-gradient-to-r from-red-500/10 to-pink-500/10 hover:from-red-500/20 hover:to-pink-500/20 text-foreground transition-all duration-300"
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  whileHover={{ scale: 1.05 }}
+                                  whileTap={{ scale: 0.95 }}
+                                >
+                                  <Video size={16} className="text-red-500" /> Walkthrough Video
+                                </motion.a>
+                              )}
+                            </div>
+                            <Dialog.Close asChild>
+                              <motion.button
+                                className="absolute right-4 top-4 inline-flex h-8 w-8 items-center justify-center rounded-md border border-border/50 hover:bg-muted/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring transition-all duration-300 z-50 bg-background/50 backdrop-blur-sm"
+                                aria-label="Close dialog"
+                                whileHover={{ scale: 1.1, rotate: 90 }}
+                                whileTap={{ scale: 0.9 }}
+                              >
+                                ×
+                              </motion.button>
+                            </Dialog.Close>
+                          </div>
+
+                        </Dialog.Content>
+                      </Dialog.Portal>
+                    </Dialog.Root>
+                  </div>
+
+                  <ul className="mt-4 list-disc pl-5 space-y-2 text-sm text-muted-foreground">
+                    {proj.bullets.slice(0, 2).map((b, i) => (
+                      <motion.li
+                        key={i}
+                        initial={{ opacity: 0, x: -10 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: (idx * 0.1) + (i * 0.1) }}
+                      >
+                        {b}
+                      </motion.li>
+                    ))}
+                  </ul>
+
+                  {proj.tags && (
+                    <div className="flex flex-wrap gap-2 mt-4">
+                      {proj.tags.map((t, i) => (
+                        <motion.span
+                          key={i}
+                          className="inline-flex items-center rounded-md border border-border/50 px-2 py-1 text-[11px] text-muted-foreground bg-gradient-to-r from-muted/30 to-muted/50"
+                          initial={{ opacity: 0, scale: 0.8 }}
+                          whileInView={{ opacity: 1, scale: 1 }}
+                          viewport={{ once: true }}
+                          transition={{ delay: (idx * 0.1) + (i * 0.05) }}
+                          whileHover={{ scale: 1.05 }}
+                        >
+                          {t}
+                        </motion.span>
+                      ))}
+                    </div>
+                  )}
                 </div>
 
-                <ul className="mt-4 list-disc pl-5 space-y-2 text-sm text-muted-foreground">
-                  {proj.bullets.slice(0, 2).map((b, i) => (
-                    <motion.li
-                      key={i}
-                      initial={{ opacity: 0, x: -10 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ delay: (idx * 0.1) + (i * 0.1) }}
-                    >
-                      {b}
-                    </motion.li>
-                  ))}
-                </ul>
-
-                {proj.tags && (
-                  <div className="flex flex-wrap gap-2 mt-4">
-                    {proj.tags.map((t, i) => (
-                      <motion.span
-                        key={i}
-                        className="inline-flex items-center rounded-md border border-border/50 px-2 py-1 text-[11px] text-muted-foreground bg-gradient-to-r from-muted/30 to-muted/50"
-                        initial={{ opacity: 0, scale: 0.8 }}
-                        whileInView={{ opacity: 1, scale: 1 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: (idx * 0.1) + (i * 0.05) }}
-                        whileHover={{ scale: 1.05 }}
-                      >
-                        {t}
-                      </motion.span>
-                    ))}
-                  </div>
-                )}
-
-                <div className="flex gap-2 mt-4">
+                {/* Quick Links Pinned to Bottom */}
+                <div className="flex gap-2 mt-6 flex-wrap pt-4 border-t border-border/30">
                   {proj.links.codeCl && (
                     <motion.a
                       href={proj.links.codeCl}
-                      className="inline-flex items-center gap-2 rounded-md border border-border/50 px-2 py-2 text-sm bg-gradient-to-r from-primary/10 to-purple-500/10 hover:from-primary/20 hover:to-purple-500/20 transition-all duration-300"
+                      className="inline-flex items-center gap-2 rounded-md border border-border/50 px-2.5 py-1.5 text-xs bg-gradient-to-r from-primary/10 to-purple-500/10 hover:from-primary/20 hover:to-purple-500/20 transition-all duration-300"
                       target="_blank"
                       rel="noopener noreferrer"
                       whileHover={{ scale: 1.05 }}
@@ -275,7 +305,7 @@ const Projects = () => {
                   {proj.links.codeSv && (
                     <motion.a
                       href={proj.links.codeSv}
-                      className="inline-flex items-center gap-2 rounded-md border border-border/50 px-2 py-2 text-sm bg-gradient-to-r from-primary/10 to-purple-500/10 hover:from-primary/20 hover:to-purple-500/20 transition-all duration-300"
+                      className="inline-flex items-center gap-2 rounded-md border border-border/50 px-2.5 py-1.5 text-xs bg-gradient-to-r from-primary/10 to-purple-500/10 hover:from-primary/20 hover:to-purple-500/20 transition-all duration-300"
                       target="_blank"
                       rel="noopener noreferrer"
                       whileHover={{ scale: 1.05 }}
@@ -287,13 +317,25 @@ const Projects = () => {
                   {proj.links.demo && (
                     <motion.a
                       href={proj.links.demo}
-                      className="inline-flex items-center gap-2 rounded-md border border-border/50 px-2 py-2 text-sm bg-gradient-to-r from-primary/10 to-purple-500/10 hover:from-primary/20 hover:to-purple-500/20 transition-all duration-300"
+                      className="inline-flex items-center gap-2 rounded-md border border-border/50 px-2.5 py-1.5 text-xs bg-gradient-to-r from-primary/10 to-purple-500/10 hover:from-primary/20 hover:to-purple-500/20 transition-all duration-300"
                       target="_blank"
                       rel="noopener noreferrer"
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
                     >
                       <FaExternalLinkAlt /> Live Demo
+                    </motion.a>
+                  )}
+                  {proj.links.video && (
+                    <motion.a
+                      href={proj.links.video}
+                      className="inline-flex items-center gap-2 rounded-md border border-border/50 px-2.5 py-1.5 text-xs bg-gradient-to-r from-red-500/10 to-pink-500/10 hover:from-red-500/20 hover:to-pink-500/20 transition-all duration-300"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                    >
+                      <Video size={14} className="text-red-500" /> Walkthrough Video
                     </motion.a>
                   )}
                 </div>

@@ -11,16 +11,18 @@ const certificationsData = [
     title: "Complete Web Development Bootcamp",
     issuer: "Programming Hero",
     date: "Jan 2025 - Mar 2025",
-    logo: "https://web.programming-hero.com/assets/ph_logo-C24KMH6S.svg",
+    logo: "/assets/programming-hero.png",
     link: "#",
+    customPadding: "p-5",
   },
   {
     id: 2,
     title: "Black Belt (Elite Developer)",
     issuer: "Programming Hero",
     date: "October 2025",
-    logo: "https://web.programming-hero.com/assets/ph_logo-C24KMH6S.svg",
+    logo: "/assets/programming-hero.png",
     link: "#",
+    customPadding: "p-5",
   },
   {
     id: 3,
@@ -68,7 +70,7 @@ const Certifications = () => {
           </p>
         </div>
 
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {certificationsData.map((cert, index) => (
             <motion.div
               key={cert.id}
@@ -78,14 +80,14 @@ const Certifications = () => {
               transition={{ delay: index * 0.1 }}
               className="group relative flex flex-col items-center p-6 bg-card border border-border rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1 text-center"
             >
-              {/* Logo container */}
-              <div className="w-20 h-20 mb-4 rounded-full bg-secondary/50 flex items-center justify-center p-4 group-hover:scale-110 transition-transform duration-300 relative">
+              {/* Logo container - standard 80px circle */}
+              <div className={`w-20 h-20 mb-4 rounded-full bg-secondary/50 flex items-center justify-center ${cert.customPadding || 'p-4'} group-hover:scale-110 transition-transform duration-300 relative overflow-hidden`}>
                 <Image
                   src={cert.logo}
                   alt={cert.issuer}
-                  width={48}
-                  height={48}
-                  unoptimized
+                  width={56}
+                  height={56}
+                  unoptimized={cert.logo.startsWith("http")}
                   className={`w-full h-full object-contain ${
                     cert.invertDark ? "dark:invert-[20%]" : ""
                   }`}
@@ -96,7 +98,7 @@ const Certifications = () => {
                 {cert.title}
               </h3>
               
-              <div className="space-y-1 mb-6">
+              <div className="space-y-1 mb-2">
                 <p className="text-sm font-medium text-foreground/80">
                   {cert.issuer}
                 </p>
