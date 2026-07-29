@@ -50,3 +50,5 @@
 body {
   @apply bg-background text-foreground antialiased;
 }
+/* Tailwind CSS enabled */
+

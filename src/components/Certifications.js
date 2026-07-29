@@ -1,7 +1,7 @@
 // src/components/Certifications.js
 import React from "react";
 import { motion } from "framer-motion";
-import { ExternalLink, Award } from "lucide-react";
+import { Award } from "lucide-react";
 
 const certificationsData = [
   {
