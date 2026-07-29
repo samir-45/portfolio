@@ -31,6 +31,7 @@ const Header = () => {
     { name: "About", id: "about" },
     { name: "Experience", id: "experience" },
     { name: "Projects", id: "projects" },
+    { name: "Metrics", id: "github-stats" },
     { name: "Skills", id: "skills" },
     { name: "Education", id: "education" },
     { name: "Certifications", id: "certifications" },
@@ -45,7 +46,7 @@ const Header = () => {
       className={cn(
         "sticky top-0 z-50 w-full transition-all duration-300",
         scrolled
-          ? "border-b border-b-gray-400 bg-background/80 backdrop-blur-md shadow-sm"
+          ? "border-b border-border/80 bg-background/80 backdrop-blur-md shadow-sm"
           : "bg-transparent border-transparent"
       )}
     >
@@ -85,7 +86,7 @@ const Header = () => {
           <div className="flex items-center gap-3">
             <button
               onClick={() => scrollToSection("contact")}
-              className="inline-flex h-9 items-center gap-2 rounded-md border border-primary/30 bg-primary/5 hover:bg-primary/10 hover:border-primary text-foreground hover:text-primary px-3.5 py-2 text-sm font-medium transition-all duration-200"
+              className="inline-flex h-9 items-center gap-2 rounded-lg border border-primary/30 bg-primary/5 hover:bg-primary/10 hover:border-primary text-foreground hover:text-primary px-3.5 py-2 text-sm font-semibold transition-all duration-200"
             >
               <MessageSquare size={15} /> Contact
             </button>
@@ -94,7 +95,7 @@ const Header = () => {
               href="https://drive.google.com/file/d/1LzH7eElLAZ0IkVMNHkZbICXZSxUU9DQg/view?usp=sharing"
               target="_blank"
               rel="noreferrer"
-              className="inline-flex h-9 items-center gap-2 rounded-md bg-primary px-3.5 py-2 text-sm font-medium text-primary-foreground shadow-sm hover:shadow-md hover:shadow-primary/20 hover:opacity-95 transition-all duration-200"
+              className="inline-flex h-9 items-center gap-2 rounded-lg bg-primary px-3.5 py-2 text-sm font-semibold text-primary-foreground shadow-sm hover:shadow-md hover:shadow-primary/20 hover:opacity-95 transition-all duration-200"
             >
               <Download size={15} /> Resume
             </a>
@@ -121,38 +122,36 @@ const Header = () => {
         {menuOpen && (
           <motion.div
             initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "100vh" }}
+            animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="fixed inset-0 top-16 z-40 bg-background/95 backdrop-blur-md md:hidden border-t overflow-y-auto"
+            transition={{ duration: 0.3 }}
+            className="md:hidden border-b border-border bg-background/95 backdrop-blur-md"
           >
-            <div className="flex flex-col items-center justify-center min-h-[80vh] gap-8 p-6">
-              {navLinks.map((link, i) => (
-                <motion.button
+            <div className="container mx-auto px-6 py-6 flex flex-col gap-4">
+              {navLinks.map((link) => (
+                <button
                   key={link.name}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.1 * i }}
                   onClick={() => scrollToSection(link.id)}
-                  className="text-2xl font-semibold hover:text-primary transition-colors"
+                  className="text-left text-base font-medium text-foreground/80 hover:text-primary transition-colors py-1"
                 >
                   {link.name}
-                </motion.button>
+                </button>
               ))}
 
-              <div className="flex flex-col sm:flex-row items-center gap-4 w-full max-w-xs pt-4">
+              <div className="pt-4 border-t border-border flex flex-col gap-3">
                 <button
                   onClick={() => scrollToSection("contact")}
-                  className="w-full inline-flex h-11 items-center justify-center gap-2 rounded-md border border-primary/30 bg-primary/5 hover:bg-primary/10 hover:border-primary text-foreground hover:text-primary text-base font-semibold transition-colors"
+                  className="inline-flex justify-center items-center gap-2 rounded-lg border border-primary/30 bg-primary/5 text-foreground px-4 py-2.5 text-sm font-semibold"
                 >
-                  <MessageSquare size={18} /> Contact Me
+                  <MessageSquare size={16} /> Contact Me
                 </button>
                 <a
                   href="https://drive.google.com/file/d/1LzH7eElLAZ0IkVMNHkZbICXZSxUU9DQg/view?usp=sharing"
                   target="_blank"
                   rel="noreferrer"
-                  className="w-full inline-flex h-11 items-center justify-center gap-2 rounded-md bg-primary text-primary-foreground text-base font-semibold shadow"
+                  className="inline-flex justify-center items-center gap-2 rounded-lg bg-primary text-primary-foreground px-4 py-2.5 text-sm font-semibold shadow-sm"
                 >
-                  <Download size={18} /> Download Resume
+                  <Download size={16} /> Download Resume
                 </a>
               </div>
             </div>

@@ -39,11 +39,10 @@ const Projects = () => {
             return (
               <motion.div
                 key={idx}
-                className={`group relative rounded-2xl border border-border bg-card p-6 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between overflow-hidden min-h-[520px] ${
-                  isHero
+                className={`group relative rounded-2xl border border-border bg-card p-6 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between overflow-hidden min-h-[520px] ${isHero
                     ? 'md:col-span-2 lg:col-span-2 min-h-[580px]'
                     : 'md:col-span-1 lg:col-span-1'
-                }`}
+                  }`}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -77,9 +76,8 @@ const Projects = () => {
                       {/* Project Image Banner on Card - CLICKABLE TO OPEN MODAL */}
                       <Dialog.Trigger asChild>
                         <div
-                          className={`relative w-full mb-5 overflow-hidden rounded-xl border border-border bg-muted/20 cursor-pointer group/img ${
-                            isHero ? 'h-56 sm:h-64 lg:h-72' : 'h-52'
-                          }`}
+                          className={`relative w-full mb-5 overflow-hidden rounded-xl border border-border bg-muted/20 cursor-pointer group/img ${isHero ? 'h-56 sm:h-64 lg:h-72' : 'h-52'
+                            }`}
                         >
                           <Image
                             src={proj.image}

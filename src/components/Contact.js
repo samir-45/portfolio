@@ -24,7 +24,7 @@ const Contact = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
+
     try {
       // Using FormSubmit.co service bound to mdmahinkhan621@gmail.com
       const response = await fetch('https://formsubmit.co/ajax/mdmahinkhan621@gmail.com', {
@@ -63,7 +63,7 @@ const Contact = () => {
   return (
     <section id="contact" className="py-20 lg:py-24 bg-background relative">
       <div className="container mx-auto px-6">
-        
+
         {/* Header */}
         <div className="text-center mb-16">
           <div className="inline-flex items-center gap-2 px-3 py-1 text-sm font-medium text-primary bg-primary/10 rounded-full mb-4">
@@ -71,13 +71,13 @@ const Contact = () => {
           </div>
           <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-4">Contact Me</h2>
           <p className="text-muted-foreground max-w-xl mx-auto">
-            Have a project in mind or want to discuss a new opportunity? 
+            Have a project in mind or want to discuss a new opportunity?
             I'm always open to new ideas and collaborations.
           </p>
         </div>
 
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-start max-w-5xl mx-auto">
-          
+
           {/* Contact Info (Left Side) */}
           <div className="space-y-8">
             <div>
@@ -92,13 +92,13 @@ const Contact = () => {
               {/* Special Email Contact Card with 1-Click Copy Button */}
               <EmailContactItem email="mdmahinkhan621@gmail.com" />
 
-              <ContactItem 
+              <ContactItem
                 icon={<Linkedin size={20} />}
                 label="LinkedIn"
                 value="linkedin.com/in/devmahin"
                 href="https://www.linkedin.com/in/devmahin"
               />
-              <ContactItem 
+              <ContactItem
                 icon={<Github size={20} />}
                 label="GitHub"
                 value="github.com/samir-45"
@@ -152,8 +152,8 @@ const Contact = () => {
                 ></textarea>
               </div>
 
-              <button 
-                type="submit" 
+              <button
+                type="submit"
                 disabled={isSubmitting}
                 className="w-full inline-flex items-center justify-center gap-2 rounded-lg bg-primary px-4 py-3 text-sm font-semibold text-primary-foreground shadow-sm hover:bg-primary/90 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
               >
@@ -190,7 +190,7 @@ const EmailContactItem = ({ email }) => {
 
   return (
     <div className="flex items-center justify-between p-4 rounded-lg bg-secondary/30 hover:bg-secondary/60 transition-colors group">
-      <a 
+      <a
         href={`mailto:${email}`}
         className="flex items-start gap-4 flex-1 min-w-0"
       >
@@ -226,7 +226,7 @@ const EmailContactItem = ({ email }) => {
 
 // Helper Component for standard links
 const ContactItem = ({ icon, label, value, href }) => (
-  <a 
+  <a
     href={href}
     target="_blank"
     rel="noopener noreferrer"
