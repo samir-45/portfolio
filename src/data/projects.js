@@ -8,7 +8,7 @@ export const projects = [
       'Implemented JWT-based role-based access control (RBAC) governing complex property lifecycle states across three distinct user roles.',
       'Integrated an AI assistant to automate property inquiries and deliver personalized investor guidance, cutting manual response overhead.',
     ],
-    image: '/assets/irendity.png',
+    image: '/assets/irendity.webp',
     links: {
       demo: 'https://irendity-frontend.vercel.app/',
       video: 'https://drive.google.com/file/d/1FIgazdi72Ej7cTtd83utqg9mLGTQzPq_/view?usp=sharing',
@@ -23,7 +23,7 @@ export const projects = [
       'Built a Stripe-powered upgrade flow for charities plus an admin approval pipeline, streamlining onboarding for new organizations.',
       'Implemented Firebase Authentication and end-to-end role interactions across restaurants, charities, and admins.',
     ],
-    image: '/assets/proj-1.png',
+    image: '/assets/proj-1.webp',
     links: {
       codeCl: 'https://github.com/samir-45/FoodResQ-client',
       codeSv: 'https://github.com/samir-45/FoodResQ-server',
@@ -40,12 +40,12 @@ export const projects = [
       'Implemented data fetching/caching with RTK Query and clean response mapping to keep UI state predictable and fast.',
       'Shipped authentication (login/register), token storage, and protected admin CRUD for categories and products.',
     ],
-    image: '/assets/proj-4.png',
+    image: '/assets/proj-4.webp',
     links: {
       codeCl: 'https://github.com/samir-45/fresh-harvests',
       demo: 'https://fresh-harvests-brown.vercel.app/',
     },
-    tags: ['Next.js', 'TypeScript', 'Redux Toolkit', 'RTK Query', 'Tailwind CSS', 'DaisyUI', 'REST API', 'Vercel'],
+    tags: ['Next.js', 'TypeScript', 'Redux Toolkit', 'RTK Query', 'Tailwind CSS', 'REST API', 'Vercel'],
   },
   {
     title: 'Eduverse – Developer Blog Platform',
@@ -56,13 +56,13 @@ export const projects = [
       'JWT-based authentication and authenticated user-based access for secure operations.',
       'Designed an intuitive UI for distraction-free reading and content management.',
     ],
-    image: '/assets/proj-2.png',
+    image: '/assets/proj-2.webp',
     links: {
       codeCl: 'https://github.com/samir-45/EduVerse-client',
       codeSv: 'https://github.com/samir-45/EduVerse-server',
       demo: 'https://eduverse-sm.netlify.app/',
     },
-    tags: ['React', 'Tailwind CSS', 'DaisyUI', 'Node.js', 'Express.js', 'MongoDB', 'Firebase'],
+    tags: ['React', 'Tailwind CSS', 'Node.js', 'Express.js', 'MongoDB', 'Firebase'],
   },
   {
     title: 'Plantify – Plant Care Tracker',
@@ -73,12 +73,12 @@ export const projects = [
       'Users can log plant activity, receive reminders, and track changes.',
       'Authenticated user dashboard using JWT for secure and private data management.',
     ],
-    image: '/assets/proj-3.png',
+    image: '/assets/proj-3.webp',
     links: {
       codeCl: 'https://github.com/samir-45/Plantify-client',
       codeSv: 'https://github.com/samir-45/Plantify-server',
       demo: 'https://sm-plantify.netlify.app/',
     },
-    tags: ['React', 'Tailwind CSS', 'DaisyUI', 'Node.js', 'Express.js', 'MongoDB', 'Firebase'],
+    tags: ['React', 'Tailwind CSS', 'Node.js', 'Express.js', 'MongoDB', 'Firebase'],
   },
 ];

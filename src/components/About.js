@@ -3,12 +3,20 @@
 import React from 'react';
 import { FaLinkedin, FaGithub, FaEnvelope } from "react-icons/fa";
 import { BsTwitterX } from "react-icons/bs";
+import { MessageSquare, Download, ArrowRight, Sparkles } from "lucide-react";
 import { ReactTyped } from 'react-typed';
 import Image from 'next/image';
 import { profile } from '../data/profile';
 import { motion } from 'framer-motion';
 
 const About = () => {
+  const scrollToSection = (sectionId) => {
+    const section = document.getElementById(sectionId);
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <section
       id="about"
@@ -70,9 +78,9 @@ const About = () => {
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="inline-block mb-4 px-3 py-1 text-sm font-medium text-primary bg-primary/10 rounded-full"
+            className="inline-flex items-center gap-2 mb-4 px-3.5 py-1 text-sm font-medium text-primary bg-primary/10 rounded-full border border-primary/20"
           >
-            Welcome to my portfolio
+            <Sparkles size={14} className="text-primary animate-pulse" /> Available for New Opportunities
           </motion.div>
 
           <motion.h3
@@ -90,6 +98,7 @@ const About = () => {
               className="typed-text"
             />
           </motion.h3>
+
           {profile.bio.map((p, i) => (
             <motion.p
               key={i}
@@ -101,7 +110,41 @@ const About = () => {
               {p}
             </motion.p>
           ))}
+
+          {/* Hero CTA Action Buttons */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.5 }}
+            className="mt-8 flex flex-wrap items-center gap-4"
+          >
+            <button
+              onClick={() => scrollToSection("contact")}
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-primary text-primary-foreground font-semibold shadow-md hover:shadow-lg hover:shadow-primary/20 hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 group"
+            >
+              <MessageSquare size={18} /> Let's Talk
+              <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+            </button>
+
+            <a
+              href="https://drive.google.com/file/d/1LzH7eElLAZ0IkVMNHkZbICXZSxUU9DQg/view?usp=sharing"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-lg border border-primary/30 bg-primary/5 hover:bg-primary/10 hover:border-primary text-foreground hover:text-primary font-semibold hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200"
+            >
+              <Download size={18} /> Download Resume
+            </a>
+
+            <button
+              onClick={() => scrollToSection("projects")}
+              className="inline-flex items-center gap-2 px-4 py-3 text-sm font-medium text-muted-foreground hover:text-primary transition-colors"
+            >
+              View Work ↓
+            </button>
+          </motion.div>
         </motion.div>
+
         <motion.div
           className="flex-1 w-full flex flex-col items-center gap-4"
           initial={{ opacity: 0, x: 50 }}

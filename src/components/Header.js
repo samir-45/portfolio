@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Download } from "lucide-react";
+import { Menu, X, Download, MessageSquare } from "lucide-react";
 import Image from "next/image";
 import { ModeToggle } from "./theme/mode-toggle";
 import { cn } from "../lib/utils";
@@ -82,15 +82,23 @@ const Header = () => {
 
           <div className="h-6 w-px bg-border/50" />
 
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-3">
+            <button
+              onClick={() => scrollToSection("contact")}
+              className="inline-flex h-9 items-center gap-2 rounded-md border border-primary/30 bg-primary/5 hover:bg-primary/10 hover:border-primary text-foreground hover:text-primary px-3.5 py-2 text-sm font-medium transition-all duration-200"
+            >
+              <MessageSquare size={15} /> Contact
+            </button>
+
             <a
               href="https://drive.google.com/file/d/1LzH7eElLAZ0IkVMNHkZbICXZSxUU9DQg/view?usp=sharing"
               target="_blank"
               rel="noreferrer"
-              className="inline-flex h-9 items-center gap-2 rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground shadow transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
+              className="inline-flex h-9 items-center gap-2 rounded-md bg-primary px-3.5 py-2 text-sm font-medium text-primary-foreground shadow-sm hover:shadow-md hover:shadow-primary/20 hover:opacity-95 transition-all duration-200"
             >
-              <Download size={16} /> Resume
+              <Download size={15} /> Resume
             </a>
+            
             <ModeToggle />
           </div>
         </div>
@@ -130,17 +138,23 @@ const Header = () => {
                   {link.name}
                 </motion.button>
               ))}
-              <motion.a
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.3 }}
-                href="https://drive.google.com/file/d/1LzH7eElLAZ0IkVMNHkZbICXZSxUU9DQg/view?usp=sharing"
-                target="_blank"
-                rel="noreferrer"
-                className="mt-4 flex items-center gap-2 rounded-full bg-primary px-8 py-3 text-lg font-medium text-primary-foreground shadow-lg hover:bg-primary/90"
-              >
-                <Download size={20} /> Download Resume
-              </motion.a>
+
+              <div className="flex flex-col sm:flex-row items-center gap-4 w-full max-w-xs pt-4">
+                <button
+                  onClick={() => scrollToSection("contact")}
+                  className="w-full inline-flex h-11 items-center justify-center gap-2 rounded-md border border-primary/30 bg-primary/5 hover:bg-primary/10 hover:border-primary text-foreground hover:text-primary text-base font-semibold transition-colors"
+                >
+                  <MessageSquare size={18} /> Contact Me
+                </button>
+                <a
+                  href="https://drive.google.com/file/d/1LzH7eElLAZ0IkVMNHkZbICXZSxUU9DQg/view?usp=sharing"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="w-full inline-flex h-11 items-center justify-center gap-2 rounded-md bg-primary text-primary-foreground text-base font-semibold shadow"
+                >
+                  <Download size={18} /> Download Resume
+                </a>
+              </div>
             </div>
           </motion.div>
         )}

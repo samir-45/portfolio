@@ -8,7 +8,7 @@ export const profile = {
     "Skilled at turning Figma designs into performant, accessible interfaces and pairing them with Node.js/Express APIs, JWT-based role access, and Stripe payments.",
     "Currently delivering client-facing web products at SM Technology within a 15-person agile team. Looking to bring the same ownership and craftsmanship to a product engineering role with room to grow into senior front-end or full-stack work.",
   ],
-  image: "/assets/mahin-pic.png",
+  image: "/assets/mahin-pic.webp",
   social: {
     email: "mdmahinkhan621@gmail.com",
     linkedin: "https://www.linkedin.com/in/devmahin",

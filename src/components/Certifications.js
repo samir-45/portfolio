@@ -11,7 +11,7 @@ const certificationsData = [
     title: "Complete Web Development Bootcamp",
     issuer: "Programming Hero",
     date: "Jan 2025 - Mar 2025",
-    logo: "/assets/programming-hero.png",
+    logo: "/assets/programming-hero.webp",
     link: "#",
     customPadding: "p-5",
   },
@@ -20,7 +20,7 @@ const certificationsData = [
     title: "Black Belt (Elite Developer)",
     issuer: "Programming Hero",
     date: "October 2025",
-    logo: "/assets/programming-hero.png",
+    logo: "/assets/programming-hero.webp",
     link: "#",
     customPadding: "p-5",
   },
@@ -80,7 +80,7 @@ const Certifications = () => {
               transition={{ delay: index * 0.1 }}
               className="group relative flex flex-col items-center p-6 bg-card border border-border rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1 text-center"
             >
-              {/* Logo container - standard 80px circle */}
+              {/* Logo container */}
               <div className={`w-20 h-20 mb-4 rounded-full bg-secondary/50 flex items-center justify-center ${cert.customPadding || 'p-4'} group-hover:scale-110 transition-transform duration-300 relative overflow-hidden`}>
                 <Image
                   src={cert.logo}
