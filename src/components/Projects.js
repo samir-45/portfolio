@@ -31,18 +31,19 @@ const Projects = () => {
           </p>
         </motion.div>
 
-        {/* Clean Bento Grid Layout */}
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 auto-rows-[minmax(0,1fr)]">
+        {/* Bento Grid Layout: Compact on Mobile, Equal Height on Desktop */}
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 md:auto-rows-fr">
           {projects.map((proj, idx) => {
-            const isHero = idx === 0; // iRendity gets 2-column Bento Hero treatment
+            const isHero = idx === 0;
 
             return (
               <motion.div
                 key={idx}
-                className={`group relative rounded-2xl border border-border bg-card p-6 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between overflow-hidden min-h-[520px] ${isHero
-                    ? 'md:col-span-2 lg:col-span-2 min-h-[580px]'
+                className={`group relative rounded-2xl border border-border bg-card p-6 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between overflow-hidden min-h-0 md:min-h-[520px] ${
+                  isHero
+                    ? 'md:col-span-2 lg:col-span-2 md:min-h-[580px]'
                     : 'md:col-span-1 lg:col-span-1'
-                  }`}
+                }`}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -73,11 +74,12 @@ const Projects = () => {
                         </Dialog.Trigger>
                       </div>
 
-                      {/* Project Image Banner on Card - CLICKABLE TO OPEN MODAL */}
+                      {/* Project Image Banner on Card */}
                       <Dialog.Trigger asChild>
                         <div
-                          className={`relative w-full mb-5 overflow-hidden rounded-xl border border-border bg-muted/20 cursor-pointer group/img ${isHero ? 'h-56 sm:h-64 lg:h-72' : 'h-52'
-                            }`}
+                          className={`relative w-full mb-5 overflow-hidden rounded-xl border border-border bg-muted/20 cursor-pointer group/img ${
+                            isHero ? 'h-56 sm:h-64 lg:h-72' : 'h-52'
+                          }`}
                         >
                           <Image
                             src={proj.image}
@@ -87,14 +89,12 @@ const Projects = () => {
                             className="object-cover object-top transition-transform duration-500 group-hover/img:scale-105"
                           />
 
-                          {/* Overlay Zoom Hint Icon on Hover */}
                           <div className="absolute inset-0 bg-black/20 opacity-0 group-hover/img:opacity-100 transition-opacity duration-300 flex items-center justify-center pointer-events-none">
                             <span className="px-3 py-1.5 rounded-full bg-background/80 backdrop-blur-sm text-xs font-semibold text-foreground border border-border/50 shadow-md">
                               Click for Details
                             </span>
                           </div>
 
-                          {/* Prominent Video Badge Overlay on Thumbnail */}
                           {proj.links.video && (
                             <a
                               href={proj.links.video}
@@ -113,7 +113,7 @@ const Projects = () => {
                         {proj.title}
                       </h3>
 
-                      {/* Key Highlights Bullet Points List directly on Card */}
+                      {/* Key Highlights Bullet Points List */}
                       <ul className="text-sm text-muted-foreground leading-relaxed space-y-2 mb-6">
                         {proj.bullets.slice(0, isHero ? 3 : 2).map((bullet, bIdx) => (
                           <li key={bIdx} className="flex items-start gap-2">
@@ -136,7 +136,7 @@ const Projects = () => {
                       </div>
                     </div>
 
-                    {/* Prominent Quick Action Links at Bottom */}
+                    {/* Quick Action Links at Bottom */}
                     <div className="pt-4 border-t border-border flex flex-wrap items-center justify-between gap-3">
                       <div className="flex items-center gap-2.5 flex-wrap">
                         {proj.links.demo && (

@@ -66,7 +66,7 @@ const Header = () => {
           />
         </button>
 
-        {/* Desktop Nav */}
+        {/* Desktop Nav (Original md:flex) */}
         <div className="hidden md:flex items-center gap-8">
           <nav className="flex items-center gap-6">
             {navLinks.map((link) => (
@@ -125,7 +125,7 @@ const Header = () => {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3 }}
-            className="md:hidden border-b border-border bg-background/95 backdrop-blur-md"
+            className="md:hidden border-b border-border bg-background/95 backdrop-blur-md shadow-xl"
           >
             <div className="container mx-auto px-6 py-6 flex flex-col gap-4">
               {navLinks.map((link) => (
@@ -141,7 +141,7 @@ const Header = () => {
               <div className="pt-4 border-t border-border flex flex-col gap-3">
                 <button
                   onClick={() => scrollToSection("contact")}
-                  className="inline-flex justify-center items-center gap-2 rounded-lg border border-primary/30 bg-primary/5 text-foreground px-4 py-2.5 text-sm font-semibold"
+                  className="w-full inline-flex justify-center items-center gap-2 rounded-lg border border-primary/30 bg-primary/5 text-foreground px-4 py-2.5 text-sm font-semibold"
                 >
                   <MessageSquare size={16} /> Contact Me
                 </button>
@@ -149,7 +149,7 @@ const Header = () => {
                   href="https://drive.google.com/file/d/1LzH7eElLAZ0IkVMNHkZbICXZSxUU9DQg/view?usp=sharing"
                   target="_blank"
                   rel="noreferrer"
-                  className="inline-flex justify-center items-center gap-2 rounded-lg bg-primary text-primary-foreground px-4 py-2.5 text-sm font-semibold shadow-sm"
+                  className="w-full inline-flex justify-center items-center gap-2 rounded-lg bg-primary text-primary-foreground px-4 py-2.5 text-sm font-semibold shadow-sm"
                 >
                   <Download size={16} /> Download Resume
                 </a>
