@@ -1,7 +1,10 @@
 export const projects = [
   {
+    id: 'irendity',
     title: 'Irendity – Marketplace for Income-Producing Real Estate',
     period: 'Jan 2026 - Present',
+    category: 'SaaS & Real Estate',
+    domainUrl: 'https://irendity-frontend.vercel.app',
     bullets: [
       'A premium investment platform for acquiring leased properties with defined yields and active contracts.',
       'Integrated an AI assistant to automate property inquiries and deliver personalized investor guidance, cutting manual response overhead.',
@@ -16,8 +19,11 @@ export const projects = [
     tags: ['Next.js', 'TypeScript', 'Redux', 'RTK Query', 'Tailwind CSS', 'Ant Design', 'Stripe', 'AI', 'Leaflet Maps'],
   },
   {
+    id: 'foodresq',
     title: 'FoodResQ – Food Donation & Waste Reduction Platform',
     period: 'April 2025 - May 2025',
+    category: 'Full-Stack Apps',
+    domainUrl: 'https://food-res-q.netlify.app',
     bullets: [
       'A role-based food donation system connecting restaurants with charities to redistribute surplus food, with real-time donation tracking and visual reporting (Recharts).',
       'Built a Stripe-powered upgrade flow for charities plus an admin approval pipeline, streamlining onboarding for new organizations.',
@@ -32,8 +38,11 @@ export const projects = [
     tags: ['React', 'Tailwind CSS', 'Node.js', 'Express.js', 'MongoDB', 'Firebase Auth', 'Stripe', 'Recharts'],
   },
   {
+    id: 'fresh-harvests',
     title: 'Fresh Harvests – Grocery Shop Website',
     period: 'December 2025 - December 2025',
+    category: 'E-Commerce',
+    domainUrl: 'https://fresh-harvests-brown.vercel.app',
     bullets: [
       'A responsive grocery shop web app with product browsing and admin inventory management.',
       'Built dynamic product listing, category filtering, and related-product recommendations for a responsive grocery storefront.',
@@ -48,8 +57,11 @@ export const projects = [
     tags: ['Next.js', 'TypeScript', 'Redux Toolkit', 'RTK Query', 'Tailwind CSS', 'REST API', 'Vercel'],
   },
   {
+    id: 'eduverse',
     title: 'Eduverse – Developer Blog Platform',
     period: 'January 2023 - June 2023',
+    category: 'Dev Platforms',
+    domainUrl: 'https://eduverse-sm.netlify.app',
     bullets: [
       'A full-stack platform for developers to explore, publish, and manage technical articles.',
       'Users can browse, write, edit, and delete blog posts with full CRUD operations.',
@@ -65,8 +77,11 @@ export const projects = [
     tags: ['React', 'Tailwind CSS', 'Node.js', 'Express.js', 'MongoDB', 'Firebase'],
   },
   {
+    id: 'plantify',
     title: 'Plantify – Plant Care Tracker',
     period: 'May 2025 - Present',
+    category: 'Full-Stack Apps',
+    domainUrl: 'https://sm-plantify.netlify.app',
     bullets: [
       'A MERN app to monitor, schedule, and track personalized plant care routines.',
       'Integrated external plant health APIs for real-time environmental data.',
