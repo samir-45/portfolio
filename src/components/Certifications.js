@@ -21,6 +21,13 @@ const additionalCertifications = [
     image: '/assets/programming-hero.png',
     link: '#',
   },
+  {
+    name: 'IELTS (International English Proficiency)',
+    issuer: 'British Council',
+    period: 'Global Standard • Fluent',
+    image: '/assets/programming-hero.png',
+    link: '#',
+  },
 ];
 
 const allCerts = [...certifications, ...additionalCertifications];
