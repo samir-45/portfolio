@@ -1,0 +1,214 @@
+@import "../variables.css";
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 5.1%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 5.1%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 5.1%;
+    --primary: 0 0% 5.1%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 255 100% 97%;
+    --secondary-foreground: 0 0% 5.1%;
+    --muted: 255 100% 97%;
+    --muted-foreground: 0 0% 30.2%;
+    --accent: 272 100% 51%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 356 75% 66%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 0 0% 89%;
+    --input: 0 0% 89%;
+    --ring: 272 100% 51%;
+    --radius: 2px;
+  }
+
+  .dark {
+    --background: 0 0% 5.1%;
+    --foreground: 0 0% 100%;
+    --card: 0 0% 9%;
+    --card-foreground: 0 0% 100%;
+    --popover: 0 0% 9%;
+    --popover-foreground: 0 0% 100%;
+    --primary: 0 0% 100%;
+    --primary-foreground: 0 0% 5.1%;
+    --secondary: 0 0% 15%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 0 0% 15%;
+    --muted-foreground: 0 0% 65%;
+    --accent: 272 100% 51%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 356 75% 66%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 0 0% 18%;
+    --input: 0 0% 18%;
+    --ring: 272 100% 51%;
+    --radius: 2px;
+  }
+
+  * {
+    border-color: var(--color-graphite-hairline, #e3e3e3);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    font-family: var(--font-ppneuemontreal), 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+
+  body {
+    background-color: var(--color-paper-white, #ffffff);
+    color: var(--color-obsidian, #0d0d0d);
+    font-family: var(--font-ppneuemontreal), 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+  }
+
+  ::selection {
+    background-color: var(--color-wisteria-tint, #e6daff);
+    color: var(--color-obsidian, #0d0d0d);
+  }
+}
+
+/* Custom Render Design System Utility Classes */
+.font-display {
+  font-family: var(--font-roobert), 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-weight: 300;
+  letter-spacing: -0.025em;
+}
+
+.font-mono {
+  font-family: var(--font-ppneuemontrealmono), 'JetBrains Mono', Consolas, monospace;
+  letter-spacing: 0.02em;
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, #6366f1 0%, #06b6d4 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline;
+}
+
+.dark .gradient-text {
+  background: linear-gradient(135deg, #818cf8 0%, #22d3ee 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline;
+}
+
+.gradient-banner {
+  background: linear-gradient(to right, #6366f1, #4f46e5, #06b6d4);
+}
+
+.dark .gradient-banner {
+  background: linear-gradient(to right, #4338ca, #3730a3, #0891b2);
+}
+
+/* Primary Dark Button */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background-color: var(--color-obsidian, #0d0d0d);
+  color: var(--color-paper-white, #ffffff);
+  border-radius: 2px;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: 500;
+  transition: all 0.15s ease-in-out;
+  cursor: pointer;
+  border: 1px solid transparent;
+}
+.btn-primary:hover {
+  opacity: 0.88;
+}
+
+/* Ghost Outline Button */
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background-color: transparent;
+  color: var(--color-obsidian, #0d0d0d);
+  border: 1px solid var(--color-obsidian, #0d0d0d);
+  border-radius: 2px;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: 500;
+  transition: all 0.15s ease-in-out;
+  cursor: pointer;
+}
+.btn-ghost:hover {
+  background-color: rgba(var(--color-obsidian-rgb, 13 13 13) / 0.08);
+}
+
+/* Pill Navigation CTA */
+.btn-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background-color: var(--color-obsidian, #0d0d0d);
+  color: var(--color-paper-white, #ffffff);
+  border-radius: 937px;
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.15s ease-in-out;
+}
+.btn-pill:hover {
+  opacity: 0.88;
+}
+
+/* Step Indicator Badge: 24x24 square filled with #8a05ff */
+.badge-step {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 2px;
+  background-color: var(--color-plasma-violet, #8a05ff);
+  color: #ffffff;
+  font-family: var(--font-ppneuemontrealmono), 'JetBrains Mono', monospace;
+  font-size: 12px;
+  font-weight: 500;
+  flex-shrink: 0;
+}
+
+/* Terminal Badge */
+.badge-terminal {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: var(--color-carbon, #272727);
+  color: #ffffff;
+  border-radius: 2px;
+  padding: 6px 12px;
+  font-family: var(--font-ppneuemontrealmono), 'JetBrains Mono', monospace;
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+}
+
+/* Schematic Panel / Card */
+.panel-render {
+  background-color: var(--color-paper-white, #ffffff);
+  border: 1px solid var(--color-graphite-hairline, #e3e3e3);
+  border-radius: 2px;
+}
+
+.panel-wisteria {
+  background-color: var(--color-wisteria-tint, #e6daff);
+  border: 1px solid var(--color-graphite-hairline, #e3e3e3);
+  border-radius: 2px;
+}
