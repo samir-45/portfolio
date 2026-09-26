@@ -19,6 +19,25 @@ export const projects = [
     tags: ['Next.js', 'TypeScript', 'Redux', 'RTK Query', 'Tailwind CSS', 'Ant Design', 'Stripe', 'AI', 'Leaflet Maps'],
   },
   {
+    id: 'haven-furniture',
+    title: 'Haven Furniture – Luxury Teak E-Commerce & Custom Atelier',
+    period: '2025 – 2026',
+    category: 'E-Commerce',
+    domainUrl: 'https://haven-furniture.vercel.app',
+    bullets: [
+      'A high-ticket bespoke furniture platform featuring real-time 3D configuration and spatial room planning.',
+      'Engineered an interactive 3D furniture configurator (Three.js) enabling real-time parametric dimension scaling (W×D×H), texture switching across timber species, and 360° orbital camera controls.',
+      'Architected a 2D architectural room planner using canvas drag-and-drop physics, spatial occupancy analytics, and client-side vector blueprint export (jsPDF / html2canvas).',
+      'Built a high-converting consultation pipeline with dual-axis catalog filtering (Framer Motion), bilingual localization (English / Bengali), and automated WhatsApp inquiry generation with pre-filled specs.',
+    ],
+    image: '/assets/haven-furniture.jpg',
+    links: {
+      demo: 'https://haven-furniture.vercel.app/',
+      codeCl: 'https://github.com/samir-45/haven-furniture',
+    },
+    tags: ['React.js', 'Three.js', 'Framer Motion', 'Tailwind CSS', 'jsPDF', 'Vite', 'Lucide Icons', 'REST API'],
+  },
+  {
     id: 'foodresq',
     title: 'FoodResQ – Food Donation & Waste Reduction Platform',
     period: 'April 2025 - May 2025',

@@ -133,6 +133,11 @@ const Contact = () => {
               </div>
 
               <ChannelLink
+                label="Direct Phone / WhatsApp"
+                value="+880 1707-472851"
+                href="https://wa.me/8801707472851"
+              />
+              <ChannelLink
                 label="LinkedIn Network"
                 value="linkedin.com/in/devmahin"
                 href="https://www.linkedin.com/in/devmahin"
@@ -148,7 +153,7 @@ const Contact = () => {
                 href="https://x.com/mdmahinkhan621"
               />
               <div className="pt-2 text-xs font-mono text-ash flex items-center justify-between">
-                <span>TIMEZONE: DHAKA (UTC+6)</span>
+                <span>LOCATION: DHAKA, BD</span>
                 <span>STATUS: AVAILABLE</span>
               </div>
             </div>
