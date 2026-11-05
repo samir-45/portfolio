@@ -40,7 +40,7 @@ const Skills = () => {
               initial={{ opacity: 0, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: index * 0.08 }}
+              transition={{ delay: Math.min(index, 5) * 0.04 }}
               className="p-6 rounded-[2px] border border-graphite-hairline bg-paper-white flex flex-col justify-between"
             >
               <div>
@@ -69,20 +69,15 @@ const Skills = () => {
                           width={20}
                           height={20}
                           unoptimized
-                          className="w-4 h-4 object-contain grayscale group-hover:grayscale-0 transition-all"
+                          className={`w-4 h-4 object-contain grayscale group-hover:grayscale-0 transition-all${skill.mono ? ' dark:invert' : ''}`}
                         />
                       </div>
-                      <span className="font-mono text-xs text-smoke group-hover:text-obsidian transition-colors truncate">
+                      <span className="text-[13px] leading-tight text-smoke group-hover:text-obsidian transition-colors">
                         {skill.name}
                       </span>
                     </div>
                   ))}
                 </div>
-              </div>
-
-              <div className="mt-6 pt-3 border-t border-graphite-hairline text-[11px] font-mono text-ash flex items-center justify-between">
-                <span>production ready</span>
-                <span>✓ checked</span>
               </div>
             </motion.div>
           ))}

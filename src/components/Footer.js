@@ -1,22 +1,12 @@
 'use client';
 
 import React from 'react';
-import { Mail, Github, Linkedin, ArrowUp } from 'lucide-react';
-import { BsTwitterX } from 'react-icons/bs';
+import { ArrowUp } from 'lucide-react';
 
 const Footer = () => {
   const scrollToTop = () => {
     if (typeof window !== 'undefined') {
       window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-  };
-
-  const scrollToSection = (sectionId) => {
-    if (typeof window !== 'undefined') {
-      const section = document.getElementById(sectionId);
-      if (section) {
-        section.scrollIntoView({ behavior: 'smooth' });
-      }
     }
   };
 
@@ -30,12 +20,12 @@ const Footer = () => {
             <span className="w-2 h-2 rounded-full bg-mint-signal inline-block" />
             <span className="text-obsidian font-medium">All systems operational</span>
             <span className="text-ash">•</span>
-            <span>Next.js 15.1.7 App Router</span>
+            <span>Next.js 15 App Router</span>
           </div>
 
           <button
             onClick={scrollToTop}
-            className="inline-flex items-center gap-1.5 text-ash hover:text-obsidian transition-colors self-start sm:self-auto"
+            className="inline-flex items-center gap-1.5 py-2 text-ash hover:text-obsidian transition-colors self-start sm:self-auto"
           >
             <span>Back to top</span>
             <ArrowUp size={12} />
@@ -67,59 +57,60 @@ const Footer = () => {
           </div>
 
           {/* Quick Links (3 cols) */}
-          <div className="lg:col-span-3 space-y-3 text-xs font-mono">
-            <h4 className="font-semibold uppercase tracking-wider text-obsidian">
+          <div className="lg:col-span-3 space-y-3 text-sm">
+            <h4 className="font-mono text-xs font-semibold uppercase tracking-wider text-obsidian">
               Navigation
             </h4>
-            <ul className="space-y-2 text-smoke">
-              <li><button onClick={() => scrollToSection('about')} className="hover:text-obsidian transition-colors">00 // Overview</button></li>
-              <li><button onClick={() => scrollToSection('experience')} className="hover:text-obsidian transition-colors">01 // Experience</button></li>
-              <li><button onClick={() => scrollToSection('projects')} className="hover:text-obsidian transition-colors">02 // Deployments</button></li>
-              <li><button onClick={() => scrollToSection('github-stats')} className="hover:text-obsidian transition-colors">03 // Telemetry</button></li>
-              <li><button onClick={() => scrollToSection('skills')} className="hover:text-obsidian transition-colors">04 // Technologies</button></li>
-              <li><button onClick={() => scrollToSection('certifications')} className="hover:text-obsidian transition-colors">05 // Credentials</button></li>
-              <li><button onClick={() => scrollToSection('contact')} className="hover:text-obsidian transition-colors">07 // Contact</button></li>
+            <ul className="space-y-0.5 text-smoke">
+              <li><a href="#about" className="inline-block py-1.5 hover:text-obsidian transition-colors">00 // Overview</a></li>
+              <li><a href="#experience" className="inline-block py-1.5 hover:text-obsidian transition-colors">01 // Experience</a></li>
+              <li><a href="#projects" className="inline-block py-1.5 hover:text-obsidian transition-colors">02 // Deployments</a></li>
+              <li><a href="#github-stats" className="inline-block py-1.5 hover:text-obsidian transition-colors">03 // Telemetry</a></li>
+              <li><a href="#skills" className="inline-block py-1.5 hover:text-obsidian transition-colors">04 // Technologies</a></li>
+              <li><a href="#certifications" className="inline-block py-1.5 hover:text-obsidian transition-colors">05 // Credentials</a></li>
+              <li><a href="#education" className="inline-block py-1.5 hover:text-obsidian transition-colors">06 // Education</a></li>
+              <li><a href="#contact" className="inline-block py-1.5 hover:text-obsidian transition-colors">07 // Contact</a></li>
             </ul>
           </div>
 
           {/* Core Architecture (3 cols) */}
-          <div className="lg:col-span-3 space-y-3 text-xs font-mono">
-            <h4 className="font-semibold uppercase tracking-wider text-obsidian">
+          <div className="lg:col-span-3 space-y-3 text-sm">
+            <h4 className="font-mono text-xs font-semibold uppercase tracking-wider text-obsidian">
               Core Protocol
             </h4>
-            <ul className="space-y-2 text-smoke">
-              <li>Next.js 15 App Architecture</li>
-              <li>TypeScript 5.7 Strict Mode</li>
-              <li>Redux Toolkit &amp; RTK Query</li>
-              <li>Role-Based Access (JWT)</li>
-              <li>Stripe Checkout &amp; Webhooks</li>
-              <li>RESTful API Infrastructure</li>
+            <ul className="space-y-0.5 text-smoke">
+              <li className="py-1.5">Next.js 15 App Architecture</li>
+              <li className="py-1.5">TypeScript 5.7 Strict Mode</li>
+              <li className="py-1.5">Redux Toolkit &amp; RTK Query</li>
+              <li className="py-1.5">Role-Based Access (JWT)</li>
+              <li className="py-1.5">Stripe Checkout &amp; Webhooks</li>
+              <li className="py-1.5">RESTful API Infrastructure</li>
             </ul>
           </div>
 
           {/* Endpoints & Links (2 cols) */}
-          <div className="lg:col-span-2 space-y-3 text-xs font-mono">
-            <h4 className="font-semibold uppercase tracking-wider text-obsidian">
+          <div className="lg:col-span-2 space-y-3 text-sm">
+            <h4 className="font-mono text-xs font-semibold uppercase tracking-wider text-obsidian">
               Network
             </h4>
-            <ul className="space-y-2 text-smoke">
+            <ul className="space-y-0.5 text-smoke">
               <li>
-                <a href="https://github.com/samir-45" target="_blank" rel="noopener noreferrer" className="hover:text-obsidian transition-colors">
+                <a href="https://github.com/samir-45" target="_blank" rel="noopener noreferrer" className="inline-block py-1.5 hover:text-obsidian transition-colors">
                   GitHub ↗
                 </a>
               </li>
               <li>
-                <a href="https://www.linkedin.com/in/devmahin" target="_blank" rel="noopener noreferrer" className="hover:text-obsidian transition-colors">
+                <a href="https://www.linkedin.com/in/devmahin" target="_blank" rel="noopener noreferrer" className="inline-block py-1.5 hover:text-obsidian transition-colors">
                   LinkedIn ↗
                 </a>
               </li>
               <li>
-                <a href="https://x.com/mdmahinkhan621" target="_blank" rel="noopener noreferrer" className="hover:text-obsidian transition-colors">
+                <a href="https://x.com/mdmahinkhan621" target="_blank" rel="noopener noreferrer" className="inline-block py-1.5 hover:text-obsidian transition-colors">
                   X (Twitter) ↗
                 </a>
               </li>
               <li>
-                <a href="mailto:mdmahinkhan621@gmail.com" className="hover:text-obsidian transition-colors">
+                <a href="mailto:mdmahinkhan621@gmail.com" className="inline-block py-1.5 hover:text-obsidian transition-colors">
                   Email Dispatch ↗
                 </a>
               </li>
@@ -129,7 +120,7 @@ const Footer = () => {
         </div>
 
         {/* Bottom Metadata Bar */}
-        <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs font-mono text-ash text-center sm:text-left">
+        <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-ash text-center sm:text-left">
           <p>© {new Date().getFullYear()} Md Mahin Khan. Built with Render design tokens.</p>
           <p className="flex items-center gap-1.5">
             <span>Designed with precision</span>

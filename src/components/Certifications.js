@@ -1,36 +1,10 @@
 'use client';
 
 import React from 'react';
-import { certifications } from '../data/certifications';
+import { certifications as allCerts } from '../data/certifications';
 import { motion } from 'framer-motion';
 import { ExternalLink, Award, CheckCircle2 } from 'lucide-react';
 import Image from 'next/image';
-
-const additionalCertifications = [
-  {
-    name: 'Complete Web Development Bootcamp',
-    issuer: 'Programming Hero',
-    period: 'Jan 2025 - Mar 2025',
-    image: '/assets/programming-hero.png',
-    link: '#',
-  },
-  {
-    name: 'Black Belt (Elite Developer)',
-    issuer: 'Programming Hero',
-    period: 'October 2025',
-    image: '/assets/programming-hero.png',
-    link: '#',
-  },
-  {
-    name: 'IELTS (International English Proficiency)',
-    issuer: 'British Council',
-    period: 'Global Standard • Fluent',
-    image: '/assets/programming-hero.png',
-    link: '#',
-  },
-];
-
-const allCerts = [...certifications, ...additionalCertifications];
 
 const Certifications = () => {
   return (
@@ -51,11 +25,8 @@ const Certifications = () => {
               Certifications &amp; Credentials
             </h2>
             <p className="text-smoke text-sm sm:text-base mt-2 max-w-xl font-sans">
-              Industry certifications across Amazon Web Services cloud infrastructure, GitHub developer tools, and web engineering.
+              Web engineering training and language proficiency.
             </p>
-          </div>
-          <div className="font-mono text-xs text-ash">
-            <span>CREDLY VERIFIED ID</span>
           </div>
         </div>
 
@@ -67,7 +38,7 @@ const Certifications = () => {
               initial={{ opacity: 0, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: index * 0.06 }}
+              transition={{ delay: Math.min(index, 5) * 0.04 }}
               className="p-6 rounded-[2px] border border-graphite-hairline bg-paper-white flex flex-col justify-between hover:border-obsidian transition-colors"
             >
               <div>

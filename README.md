@@ -9,15 +9,14 @@ This is a personal portfolio website of Mahin Khan built with React to showcase 
 - Project showcase section
 - Skills and experience timeline
 - Contact form
-- Deployed with GitHub Pages
+- Deployed on Netlify
 
 ## Technologies Used
 
 - React.js
 - CSS3
 - JavaScript
-- GitHub Actions for CI/CD
-- GitHub Pages for hosting
+- Netlify for hosting
 
 ## Local Development
 
@@ -41,7 +40,7 @@ This is a personal portfolio website of Mahin Khan built with React to showcase 
 
 ## Deployment
 
-This portfolio is automatically deployed to GitHub Pages using GitHub Actions whenever changes are pushed to the master branch.
+This portfolio is deployed on Netlify (`@netlify/plugin-nextjs`) from the main branch.
 
 ## Support
 If you like this portfolio website, please consider giving it a ⭐ on GitHub! Your support is greatly appreciated.

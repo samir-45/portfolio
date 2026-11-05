@@ -15,21 +15,12 @@ export const metadata = {
     description: 'Crafting high-conversion web platforms at SM Technology where Figma precision meets clean, production-grade Next.js 15 & Node.js architecture.',
     url: 'https://mahin-portfolio-site.netlify.app/',
     siteName: 'Md Mahin Khan Portfolio',
-    images: [
-      {
-        url: '/og-image.png',
-        width: 1200,
-        height: 630,
-        alt: 'Md Mahin Khan - Frontend & Full-Stack Engineer Portfolio',
-      },
-    ],
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Md Mahin Khan — Frontend & Full-Stack Engineer',
     description: 'Crafting high-conversion web platforms at SM Technology where Figma precision meets clean, production-grade Next.js 15 & Node.js architecture.',
-    images: ['/og-image.png'],
   },
   robots: {
     index: true,

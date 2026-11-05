@@ -3,18 +3,11 @@
 import React from 'react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
-import { ChevronRight, Download, Mail, ExternalLink, Activity, ArrowRight, Play } from 'lucide-react';
+import { ChevronRight, Download, Mail } from 'lucide-react';
 import { FaGithub, FaLinkedin } from 'react-icons/fa';
 import { BsTwitterX } from 'react-icons/bs';
 
 const About = () => {
-  const scrollToSection = (sectionId) => {
-    const section = document.getElementById(sectionId);
-    if (section) {
-      section.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
   return (
     <section id="about" className="py-14 sm:py-18 lg:py-22 bg-paper-white relative">
       <div className="container mx-auto px-4 sm:px-6">
@@ -27,7 +20,7 @@ const About = () => {
             
             {/* Prominent Engineer Identity & Verification Pill */}
             <motion.div
-              initial={{ opacity: 0, y: 10 }}
+              initial={false}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.3 }}
               className="inline-flex items-center gap-3 mb-6 p-1.5 pr-4 rounded-[2px] bg-paper-white border border-graphite-hairline hover:border-plasma-violet/40 transition-colors"
@@ -56,19 +49,18 @@ const About = () => {
 
             {/* Display Headline: Option A */}
             <motion.h1
-              initial={{ opacity: 0, y: 15 }}
+              initial={false}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4, delay: 0.05 }}
-              className="font-display text-2xl sm:text-3xl lg:text-[38px] xl:text-[42px] leading-[1.25] text-obsidian tracking-[-0.02em] mb-7 hyphens-none"
+              className="font-display text-2xl sm:text-3xl lg:text-[38px] xl:text-[42px] leading-[1.2] sm:leading-[1.15] text-obsidian tracking-[-0.02em] mb-7 hyphens-none text-balance"
             >
-              Crafting high-conversion web platforms <br className="hidden sm:inline" />
-              where Figma precision meets{' '}
+              Crafting high-conversion web platforms where Figma precision meets{' '}
               <span className="gradient-text font-normal">production-grade code.</span>
             </motion.h1>
 
             {/* Subtext: Focused on Engineering Ownership */}
             <motion.p
-              initial={{ opacity: 0, y: 15 }}
+              initial={false}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4, delay: 0.1 }}
               className="text-smoke text-sm sm:text-base leading-relaxed max-w-xl mb-7 font-sans"
@@ -82,7 +74,7 @@ const About = () => {
 
             {/* Engineering Status Metadata Strip */}
             <motion.div
-              initial={{ opacity: 0 }}
+              initial={false}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.4, delay: 0.15 }}
               className="flex flex-wrap items-center gap-x-6 gap-y-2 py-3 mb-8 border-y border-graphite-hairline text-xs font-mono text-smoke w-full"
@@ -98,25 +90,19 @@ const About = () => {
 
             {/* Dual CTAs adhering to Render style: Primary Dark + Ghost Outline */}
             <motion.div
-              initial={{ opacity: 0, y: 10 }}
+              initial={false}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4, delay: 0.2 }}
               className="flex flex-wrap items-center gap-3.5"
             >
-              <button
-                onClick={() => scrollToSection('projects')}
-                className="btn-primary"
-              >
+              <a href="#projects" className="btn-primary">
                 <span>Explore Projects</span>
                 <ChevronRight size={16} />
-              </button>
+              </a>
 
-              <button
-                onClick={() => scrollToSection('contact')}
-                className="btn-ghost"
-              >
+              <a href="#contact" className="btn-ghost">
                 <span>Initiate Contact</span>
-              </button>
+              </a>
 
               <a
                 href="https://drive.google.com/file/d/1LzH7eElLAZ0IkVMNHkZbICXZSxUU9DQg/view?usp=sharing"
@@ -143,7 +129,7 @@ const About = () => {
           {/* Right Column: Featured Engineer Stage & Production Telemetry */}
           <div className="lg:col-span-5 w-full relative">
             <motion.div
-              initial={{ opacity: 0, scale: 0.98 }}
+              initial={false}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.5, delay: 0.15 }}
               className="p-5 sm:p-6 rounded-[2px] border border-graphite-hairline bg-gradient-to-br from-paper-white via-lilac-wash to-wisteria-tint relative overflow-hidden"
@@ -154,7 +140,6 @@ const About = () => {
                   <span className="w-2.5 h-2.5 rounded-[2px] bg-plasma-violet inline-block" />
                   <span className="text-obsidian font-medium">engineer_identity</span>
                 </span>
-                <span className="text-ash text-[11px]">sm_technology // verified</span>
               </div>
 
               {/* High-Resolution Portrait Card */}
@@ -175,11 +160,8 @@ const About = () => {
                         <h2 className="font-display text-lg font-semibold tracking-tight text-white">
                           Md Mahin Khan
                         </h2>
-                        <span className="inline-flex items-center px-1.5 py-0.5 rounded-[2px] bg-mint-signal text-black font-mono text-[9px] font-bold uppercase tracking-wider">
-                          Verified
-                        </span>
                       </div>
-                      <p className="text-zinc-200 font-mono text-xs mt-0.5">
+                      <p className="text-zinc-200 text-[13px] mt-0.5">
                         Frontend &amp; Full-Stack Specialist · Dhaka, BD
                       </p>
                     </div>
@@ -189,45 +171,31 @@ const About = () => {
                 {/* Micro-Telemetry Bar Below Photo */}
                 <div className="grid grid-cols-3 divide-x divide-graphite-hairline bg-paper-white py-2.5 px-3 text-center text-xs font-mono">
                   <div>
-                    <span className="text-[10px] text-ash block">ORGANIZATION</span>
+                    <span className="text-[11px] text-ash block">ORGANIZATION</span>
                     <span className="text-obsidian font-semibold text-[11px]">SM Tech</span>
                   </div>
                   <div>
-                    <span className="text-[10px] text-ash block">DELIVERED</span>
+                    <span className="text-[11px] text-ash block">DELIVERED</span>
                     <span className="text-obsidian font-semibold text-[11px]">10+ Projs</span>
                   </div>
                   <div>
-                    <span className="text-[10px] text-ash block">COMMITS</span>
+                    <span className="text-[11px] text-ash block">COMMITS</span>
                     <span className="text-plasma-violet font-semibold text-[11px]">500+</span>
                   </div>
                 </div>
               </div>
 
               {/* Primary Commercial Platform Highlight */}
-              <div className="p-3.5 rounded-[2px] bg-paper-white border border-graphite-hairline mb-3">
-                <div className="flex items-center justify-between mb-1.5">
+              <div className="p-3.5 rounded-[2px] bg-paper-white border border-graphite-hairline">
+                <div className="flex items-center justify-between">
                   <span className="font-mono text-xs font-medium text-obsidian flex items-center gap-1.5">
                     <span className="text-plasma-violet font-semibold">sys:</span> irendity-marketplace
                   </span>
-                  <span className="inline-flex items-center px-2 py-0.5 rounded-[937px] bg-[#dffeed] text-mint-signal font-mono text-[10px] font-medium">
-                    +9.4% APR
+                  <span className="inline-flex items-center px-2 py-0.5 rounded-[937px] bg-mint-signal/15 text-mint-signal font-mono text-[11px] font-medium">
+                    LIVE
                   </span>
                 </div>
-                <div className="flex items-center justify-between text-xs font-mono text-ash pt-1.5 border-t border-graphite-hairline/60">
-                  <span>REAL ESTATE ENGINE</span>
-                  <span className="text-obsidian font-medium">LIVE COMMERCIAL</span>
-                </div>
               </div>
-
-              {/* Floating Terminal Code Badge */}
-              <div className="pt-2 flex items-center justify-between border-t border-graphite-hairline">
-                <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded-[2px] bg-carbon text-white font-mono text-[11px]">
-                  <span className="text-plasma-violet">$</span>
-                  <span>git checkout -b hire/mahin-khan</span>
-                </div>
-                <span className="text-[11px] font-mono text-smoke">ready-for-hire</span>
-              </div>
-
             </motion.div>
           </div>
 

@@ -29,7 +29,19 @@ export function ModeToggle({ className }) {
 
   const toggleTheme = () => {
     const nextTheme = isDark ? 'light' : 'dark';
-    setTheme(nextTheme);
+    // Cross-fade instead of a hard black/white flash
+    if (!document.startViewTransition || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      setTheme(nextTheme);
+      return;
+    }
+    document.startViewTransition(() => {
+      // next-themes applies the class in an effect, after the snapshot; set it here so the fade captures it
+      const root = document.documentElement;
+      root.classList.remove('light', 'dark');
+      root.classList.add(nextTheme);
+      root.style.colorScheme = nextTheme;
+      setTheme(nextTheme);
+    });
   };
 
   return (

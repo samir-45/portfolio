@@ -1,4 +1,3 @@
-import TopBanner from '../src/components/TopBanner';
 import Header from '../src/components/Header';
 import About from '../src/components/About';
 import TechStackBar from '../src/components/TechStackBar';
@@ -13,8 +12,7 @@ import Footer from '../src/components/Footer';
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-paper-white text-obsidian flex flex-col overflow-x-hidden">
-      <TopBanner />
+    <main className="min-h-screen bg-paper-white text-obsidian flex flex-col overflow-x-clip">
       <Header />
       <div className="main-content flex-grow">
         <About />

@@ -53,7 +53,7 @@ const Contact = () => {
 
       if (response.ok && (data.success === "true" || data.success === true)) {
         toast.success('Message dispatched successfully');
-        setFormData({ name: '', email: '', message: '' });
+        setFormData({ name: '', email: '', message: '', _honey: '' });
       } else if (data.message && data.message.includes("Activation")) {
         toast('Form activation email dispatched. Please check inbox.');
       } else {
@@ -103,8 +103,8 @@ const Contact = () => {
                 <span>PRIMARY ENDPOINT</span>
                 <span className="text-mint-signal">● ACTIVE</span>
               </div>
-              <p className="font-mono text-xs text-smoke mb-1">Direct Inbox</p>
-              <p className="font-mono text-sm font-semibold text-obsidian break-all mb-4">
+              <p className="text-xs text-smoke mb-1">Direct Inbox</p>
+              <p className="text-base font-medium text-obsidian break-all mb-4">
                 mdmahinkhan621@gmail.com
               </p>
 
@@ -170,6 +170,17 @@ const Contact = () => {
             </div>
 
             <form onSubmit={handleSubmit} className="space-y-4">
+              {/* Honeypot: hidden from people, bots fill it and FormSubmit drops the message */}
+              <input
+                type="text"
+                name="_honey"
+                value={formData._honey || ''}
+                onChange={handleChange}
+                tabIndex={-1}
+                autoComplete="off"
+                aria-hidden="true"
+                className="hidden"
+              />
               <div>
                 <label htmlFor="name" className="block text-xs font-mono uppercase text-smoke mb-1.5">
                   Sender Identity *
@@ -182,7 +193,7 @@ const Contact = () => {
                   onChange={handleChange}
                   required
                   placeholder="e.g. Sarah Jenkins"
-                  className="w-full rounded-[2px] border border-graphite-hairline bg-paper-white px-3.5 py-2.5 text-sm text-obsidian font-sans placeholder:text-ash/60 focus:outline-none focus:border-obsidian transition-colors"
+                  className="w-full rounded-[2px] border border-graphite-hairline bg-paper-white px-3.5 py-2.5 text-sm text-obsidian font-sans placeholder:text-ash/60 focus:outline-none focus:border-obsidian focus:ring-2 focus:ring-plasma-violet/40 transition-colors"
                 />
               </div>
 
@@ -198,7 +209,7 @@ const Contact = () => {
                   onChange={handleChange}
                   required
                   placeholder="e.g. s.jenkins@company.com"
-                  className="w-full rounded-[2px] border border-graphite-hairline bg-paper-white px-3.5 py-2.5 text-sm text-obsidian font-sans placeholder:text-ash/60 focus:outline-none focus:border-obsidian transition-colors"
+                  className="w-full rounded-[2px] border border-graphite-hairline bg-paper-white px-3.5 py-2.5 text-sm text-obsidian font-sans placeholder:text-ash/60 focus:outline-none focus:border-obsidian focus:ring-2 focus:ring-plasma-violet/40 transition-colors"
                 />
               </div>
 
@@ -214,7 +225,7 @@ const Contact = () => {
                   required
                   rows="5"
                   placeholder="Project specifications, engineering scope, or interview scheduling..."
-                  className="w-full rounded-[2px] border border-graphite-hairline bg-paper-white px-3.5 py-2.5 text-sm text-obsidian font-sans placeholder:text-ash/60 focus:outline-none focus:border-obsidian resize-none transition-colors"
+                  className="w-full rounded-[2px] border border-graphite-hairline bg-paper-white px-3.5 py-2.5 text-sm text-obsidian font-sans placeholder:text-ash/60 focus:outline-none focus:border-obsidian focus:ring-2 focus:ring-plasma-violet/40 resize-none transition-colors"
                 ></textarea>
               </div>
 
@@ -248,13 +259,13 @@ const Contact = () => {
 };
 
 const ChannelLink = ({ label, value, href }) => (
-  <div className="flex items-center justify-between py-1 border-b border-graphite-hairline/60 text-xs font-mono">
+  <div className="flex items-center justify-between gap-3 border-b border-graphite-hairline/60 text-sm">
     <span className="text-ash">{label}</span>
     <a
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      className="text-obsidian hover:text-plasma-violet transition-colors font-medium truncate max-w-[200px]"
+      className="py-2.5 shrink-0 whitespace-nowrap text-right text-obsidian hover:text-plasma-violet transition-colors font-medium"
     >
       {value}
     </a>

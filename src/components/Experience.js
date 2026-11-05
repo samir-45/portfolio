@@ -40,7 +40,7 @@ const Experience = () => {
               initial={{ opacity: 0, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.3, delay: index * 0.1 }}
+              transition={{ duration: 0.3, delay: Math.min(index, 5) * 0.04 }}
               className="p-6 sm:p-8 rounded-[2px] border border-graphite-hairline bg-paper-white relative transition-colors"
             >
               {/* Header Details */}
@@ -54,7 +54,7 @@ const Experience = () => {
                   </div>
 
                   <p className="font-mono text-sm text-smoke mt-1.5 flex flex-wrap items-center gap-2">
-                    <span className="text-obsidian font-medium">{exp.company}</span>
+                    <span className="font-sans text-obsidian font-medium">{exp.company}</span>
                     <span className="text-ash">•</span>
                     <span className="text-smoke flex items-center gap-1">
                       <MapPin size={12} className="text-ash" /> {exp.location}

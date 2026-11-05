@@ -3,8 +3,11 @@ import fs from 'fs';
 import path from 'path';
 
 export const runtime = 'nodejs';
+export const alt = 'Md Mahin Khan - Frontend & Full-Stack Engineer Portfolio';
+export const size = { width: 1200, height: 630 };
+export const contentType = 'image/png';
 
-export async function GET() {
+export default async function Image() {
   let picBase64 = '';
   try {
     const picPath = path.join(process.cwd(), 'public', 'assets', 'mahin-pic.png');
@@ -206,7 +209,7 @@ export async function GET() {
             >
               {[
                 { label: 'React 19 & Next.js 15', color: '#6366f1' },
-                { label: '100% Strict TypeScript', color: '#38bdf8' },
+                { label: 'TypeScript', color: '#38bdf8' },
                 { label: 'Node.js & Express APIs', color: '#10b981' },
                 { label: 'Tailwind CSS Systems', color: '#a855f7' },
                 { label: 'Stripe & JWT Access', color: '#f59e0b' },
@@ -304,7 +307,7 @@ export async function GET() {
                 />
                 <span style={{ color: '#f4f4f5', fontWeight: 600 }}>engineer_identity</span>
               </div>
-              <span>sm_tech // verified</span>
+              <span>sm_tech</span>
             </div>
 
             {/* Image Container with Scrim */}
@@ -357,18 +360,6 @@ export async function GET() {
                 >
                   <span style={{ fontSize: 16, fontWeight: 700, color: '#ffffff' }}>
                     Md Mahin Khan
-                  </span>
-                  <span
-                    style={{
-                      padding: '2px 6px',
-                      borderRadius: 2,
-                      backgroundColor: '#10b981',
-                      color: '#000000',
-                      fontSize: 9,
-                      fontWeight: 700,
-                    }}
-                  >
-                    VERIFIED
                   </span>
                 </div>
                 <span style={{ fontSize: 11, color: '#e4e4e7', marginTop: 2 }}>
@@ -441,7 +432,7 @@ export async function GET() {
                   fontWeight: 600,
                 }}
               >
-                +9.4% APR
+                LIVE
               </span>
             </div>
 
@@ -484,20 +475,13 @@ export async function GET() {
         >
           <div style={{ display: 'flex', alignItems: 'center' }}>
             <span style={{ color: '#a1a1aa' }}>mahin-portfolio-site.netlify.app</span>
-            <span style={{ margin: '0 8px' }}>•</span>
-            <span>Render Aesthetic (2px Radius, Hairline, Electric Indigo)</span>
           </div>
           <div style={{ display: 'flex', alignItems: 'center' }}>
-            <span>UPTIME: 99.9%</span>
-            <span style={{ margin: '0 8px' }}>•</span>
             <span style={{ color: '#34d399' }}>OPEN TO WORK</span>
           </div>
         </div>
       </div>
     ),
-    {
-      width: 1200,
-      height: 630,
-    }
+    size
   );
 }

@@ -63,7 +63,7 @@ const GithubStats = () => {
             </p>
           </div>
           <div className="font-mono text-[11px] sm:text-xs text-ash">
-            <span>UPTIME: 99.9% • LIVE METRICS</span>
+            <span>LIVE METRICS</span>
           </div>
         </div>
 
@@ -83,7 +83,7 @@ const GithubStats = () => {
                     <h3 className="font-mono text-xs sm:text-sm font-semibold text-obsidian truncate">
                       github.com/samir-45
                     </h3>
-                    <p className="text-[10px] sm:text-xs font-mono text-ash truncate">Commit Stream &amp; Repositories</p>
+                    <p className="text-[11px] sm:text-xs font-mono text-ash truncate">Commit Stream &amp; Repositories</p>
                   </div>
                 </div>
 
@@ -129,7 +129,7 @@ const GithubStats = () => {
                     <span className="w-2 h-2 rounded-[1px] bg-plasma-violet inline-block flex-shrink-0" />
                     <span className="font-medium text-obsidian text-xs">Contribution Heatmap</span>
                   </span>
-                  <span className="text-[10px] sm:text-[11px] text-ash flex items-center gap-1">
+                  <span className="text-[11px] sm:text-[11px] text-ash flex items-center gap-1">
                     <span className="sm:hidden text-plasma-violet font-medium">Swipe ⇄</span>
                     <span className="hidden sm:inline">samir-45 // live streak</span>
                   </span>
@@ -153,7 +153,7 @@ const GithubStats = () => {
 
             </div>
 
-            <div className="mt-4 sm:mt-5 pt-3 sm:pt-3.5 border-t border-graphite-hairline flex flex-wrap items-center justify-between gap-2 text-[10px] sm:text-xs font-mono text-ash">
+            <div className="mt-4 sm:mt-5 pt-3 sm:pt-3.5 border-t border-graphite-hairline flex flex-wrap items-center justify-between gap-2 text-[11px] sm:text-xs font-mono text-ash">
               <span>SOURCE: GITHUB REST API</span>
               <span>SYNCHRONIZED REALTIME</span>
             </div>
@@ -190,21 +190,21 @@ const GithubStats = () => {
 
               {/* Engineering Standards Micro-Grid to balance height with left panel */}
               <div className="pt-3 border-t border-graphite-hairline font-mono text-xs">
-                <span className="text-[10px] text-ash uppercase tracking-wider block mb-2">Quality &amp; Standards</span>
+                <span className="text-[11px] text-ash uppercase tracking-wider block mb-2">Quality &amp; Standards</span>
                 <div className="grid grid-cols-2 gap-2 text-[11px]">
                   <div className="p-2 rounded-[2px] bg-surface-base border border-graphite-hairline/80">
-                    <span className="text-ash block text-[9px]">LINT &amp; TYPES</span>
+                    <span className="text-ash block text-[11px]">LINT &amp; TYPES</span>
                     <span className="text-obsidian font-semibold">Strict TS</span>
                   </div>
                   <div className="p-2 rounded-[2px] bg-surface-base border border-graphite-hairline/80">
-                    <span className="text-ash block text-[9px]">CI PIPELINE</span>
+                    <span className="text-ash block text-[11px]">CI PIPELINE</span>
                     <span className="text-mint-signal font-semibold">Passing</span>
                   </div>
                 </div>
               </div>
             </div>
 
-            <div className="mt-5 pt-3 border-t border-graphite-hairline text-[10px] sm:text-xs font-mono text-ash leading-relaxed">
+            <div className="mt-5 pt-3 border-t border-graphite-hairline text-sm text-ash leading-relaxed">
               <span>Codebases audited for type safety, modular hierarchy, and bundle efficiency.</span>
             </div>
           </div>
@@ -218,9 +218,9 @@ const GithubStats = () => {
 
 const MetricBox = ({ label, value, sub }) => (
   <div className="p-2.5 sm:p-3.5 rounded-[2px] border border-graphite-hairline bg-paper-white flex flex-col justify-between min-w-0">
-    <p className="text-[10px] sm:text-xs font-mono text-ash uppercase tracking-wider truncate">{label}</p>
+    <p className="text-[11px] sm:text-xs font-mono text-ash uppercase tracking-wider truncate">{label}</p>
     <p className="text-lg sm:text-xl font-mono font-bold text-obsidian my-0.5 tracking-tight truncate">{value}</p>
-    <p className="text-[10px] sm:text-xs font-mono text-smoke truncate">{sub}</p>
+    <p className="text-[11px] sm:text-xs font-mono text-smoke truncate">{sub}</p>
   </div>
 );
 

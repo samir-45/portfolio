@@ -4,11 +4,16 @@ import React from 'react';
 import { ReactLenis } from 'lenis/react';
 import { ThemeProvider } from '../src/components/theme/theme-provider';
 import { Toaster } from 'react-hot-toast';
+import { MotionConfig, useReducedMotion } from 'framer-motion';
 
 export function Providers({ children }) {
+  const reduceMotion = useReducedMotion();
+
   return (
     <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
-      <ReactLenis root options={{ lerp: 0.1, duration: 1.2, smoothWheel: true }}>
+      <MotionConfig reducedMotion="user">
+      {/* anchors: smooth-scroll in-page #links; no smooth wheel for reduced-motion users */}
+      <ReactLenis root options={{ lerp: 0.1, duration: 1.2, smoothWheel: !reduceMotion, anchors: true }}>
         {children}
         <Toaster 
           position="top-right" 
@@ -25,6 +30,7 @@ export function Providers({ children }) {
           }}
         />
       </ReactLenis>
+      </MotionConfig>
     </ThemeProvider>
   );
 }

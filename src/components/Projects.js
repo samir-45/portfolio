@@ -69,7 +69,7 @@ const Projects = () => {
                 >
                   <span>{cat}</span>
                   <span
-                    className={`px-1.5 py-0.2 rounded-full text-[10px] ${
+                    className={`px-1.5 py-0.2 rounded-full text-[11px] ${
                       isActive
                         ? 'bg-paper-white/20 text-paper-white'
                         : 'bg-lilac-wash text-ash'
@@ -156,7 +156,7 @@ const Projects = () => {
                 ) : (
                   <>
                     <span>View More Projects ({extraProjects.length})</span>
-                    <span className="inline-flex items-center px-1.5 py-0.5 rounded-[2px] bg-paper-white/20 text-[10px] text-paper-white font-mono">
+                    <span className="inline-flex items-center px-1.5 py-0.5 rounded-[2px] bg-paper-white/20 text-[11px] text-paper-white font-mono">
                       +{extraProjects.length}
                     </span>
                     <ChevronDown size={16} className="text-paper-white group-hover:translate-y-0.5 transition-transform" />
@@ -176,7 +176,7 @@ const Projects = () => {
               </a>
             </div>
 
-            <p className="font-mono text-[11px] text-ash mt-3">
+            <p className="text-sm text-ash mt-3">
               Explore complete case studies with live production URLs, architecture diagrams, and source repositories.
             </p>
           </div>
@@ -188,8 +188,14 @@ const Projects = () => {
 };
 
 // Reusable Clean Engineering Project Card
-const ProjectCard = ({ proj }) => (
-  <div className="group p-6 rounded-[2px] border border-graphite-hairline bg-paper-white flex flex-col justify-between transition-colors hover:border-obsidian">
+const ProjectCard = ({ proj }) => {
+  // Where the dialog grows from: the pointer that opened it, relative to the viewport centre
+  const [origin, setOrigin] = useState('50% 50%');
+  const captureOrigin = (e) =>
+    setOrigin(`calc(50% + ${Math.round(e.clientX - window.innerWidth / 2)}px) calc(50% + ${Math.round(e.clientY - window.innerHeight / 2)}px)`);
+
+  return (
+  <div onPointerDown={captureOrigin} className="group p-6 rounded-[2px] border border-graphite-hairline bg-paper-white flex flex-col justify-between transition-colors hover:border-obsidian">
     <Dialog.Root>
       <div className="flex flex-col h-full justify-between">
         
@@ -216,7 +222,7 @@ const ProjectCard = ({ proj }) => (
                 className="object-cover object-top transition-transform duration-300 group-hover/img:scale-[1.02]"
               />
 
-              <div className="absolute inset-0 bg-obsidian/10 opacity-0 group-hover/img:opacity-100 transition-opacity duration-200 flex items-center justify-center">
+              <div className="absolute inset-0 bg-black/20 opacity-0 group-hover/img:opacity-100 transition-opacity duration-200 flex items-center justify-center">
                 <span className="px-3 py-1.5 rounded-[2px] bg-paper-white border border-graphite-hairline text-xs font-mono text-obsidian shadow-sm">
                   Inspect Architecture ↗
                 </span>
@@ -318,21 +324,22 @@ const ProjectCard = ({ proj }) => (
       </div>
 
       {/* Radix Dialog Modal */}
-      <ProjectDialogModal proj={proj} />
+      <ProjectDialogModal proj={proj} origin={origin} />
     </Dialog.Root>
   </div>
-);
+  );
+};
 
 // Clean Engineering Schematic Modal
-const ProjectDialogModal = ({ proj }) => (
+const ProjectDialogModal = ({ proj, origin }) => (
   <Dialog.Portal>
-    <Dialog.Overlay className="fixed inset-0 bg-obsidian/60 backdrop-blur-[2px] z-50 transition-opacity" />
-    <Dialog.Content className="fixed max-h-[90vh] overflow-y-auto left-1/2 top-1/2 w-[94vw] sm:w-[90vw] max-w-3xl -translate-x-1/2 -translate-y-1/2 rounded-[2px] border border-graphite-hairline bg-paper-white p-6 sm:p-8 z-50 focus:outline-none">
+    <Dialog.Overlay className="dialog-scrim fixed inset-0 bg-black/60 backdrop-blur-[2px] z-50" />
+    <Dialog.Content data-lenis-prevent style={{ transformOrigin: origin }} className="dialog-panel fixed max-h-[90vh] overflow-y-auto left-1/2 top-1/2 w-[94vw] sm:w-[90vw] max-w-3xl -translate-x-1/2 -translate-y-1/2 rounded-[2px] border border-graphite-hairline bg-paper-white p-6 sm:p-8 z-50 focus:outline-none">
       
       {/* Modal Header */}
       <div className="flex items-center justify-between pb-4 mb-4 border-b border-graphite-hairline">
         <div className="flex items-center gap-2">
-          <span className="badge-step text-[10px]">SRC</span>
+          <span className="badge-step text-[11px]">SRC</span>
           <span className="font-mono text-xs text-smoke">system_spec // {proj.id}</span>
         </div>
         <Dialog.Close asChild>

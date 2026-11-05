@@ -40,7 +40,7 @@ const Education = () => {
               initial={{ opacity: 0, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: index * 0.08 }}
+              transition={{ delay: Math.min(index, 5) * 0.04 }}
               className="p-6 rounded-[2px] border border-graphite-hairline bg-paper-white hover:border-obsidian transition-colors"
             >
               <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-3 pb-4 mb-4 border-b border-graphite-hairline">
@@ -52,7 +52,7 @@ const Education = () => {
                     </h3>
                   </div>
                   <p className="font-mono text-xs text-smoke mt-1 flex items-center gap-2">
-                    <span className="text-obsidian font-medium">{edu.institution}</span>
+                    <span className="font-sans text-sm text-obsidian font-medium">{edu.institution}</span>
                     <span className="text-ash">•</span>
                     <span className="text-ash flex items-center gap-1">
                       <MapPin size={11} /> {edu.location}
