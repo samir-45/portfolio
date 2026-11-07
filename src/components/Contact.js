@@ -4,6 +4,9 @@ import React, { useState } from 'react';
 import { Mail, Linkedin, Github, Send, Loader2, Copy, Check, ArrowRight } from 'lucide-react';
 import { BsTwitterX } from 'react-icons/bs';
 import toast from 'react-hot-toast';
+import { profile } from '../data/profile';
+
+const bareUrl = (url) => url.replace(/^https?:\/\/(www\.)?/, '').replace(/\/$/, '');
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -24,7 +27,7 @@ const Contact = () => {
 
   const handleCopy = (e) => {
     e.preventDefault();
-    navigator.clipboard.writeText('mdmahinkhan621@gmail.com');
+    navigator.clipboard.writeText(profile.email);
     setCopied(true);
     toast.success('Email copied to clipboard');
     setTimeout(() => setCopied(false), 2500);
@@ -35,7 +38,7 @@ const Contact = () => {
     setIsSubmitting(true);
     
     try {
-      const response = await fetch('https://formsubmit.co/ajax/mdmahinkhan621@gmail.com', {
+      const response = await fetch(`https://formsubmit.co/ajax/${profile.email}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -60,7 +63,7 @@ const Contact = () => {
         throw new Error(data.message || 'Dispatch failed');
       }
     } catch (error) {
-      toast.error('Dispatch failed. Please email mdmahinkhan621@gmail.com directly.');
+      toast.error(`Dispatch failed. Please email ${profile.email} directly.`);
     } finally {
       setIsSubmitting(false);
     }
@@ -105,7 +108,7 @@ const Contact = () => {
               </div>
               <p className="text-xs text-smoke mb-1">Direct Inbox</p>
               <p className="text-base font-medium text-obsidian break-all mb-4">
-                mdmahinkhan621@gmail.com
+                {profile.email}
               </p>
 
               <button
@@ -134,27 +137,27 @@ const Contact = () => {
 
               <ChannelLink
                 label="Direct Phone / WhatsApp"
-                value="+880 1707-472851"
-                href="https://wa.me/8801707472851"
+                value={profile.phone}
+                href={`https://wa.me/${profile.phone.replace(/\D/g, '')}`}
               />
               <ChannelLink
                 label="LinkedIn Network"
-                value="linkedin.com/in/devmahin"
-                href="https://www.linkedin.com/in/devmahin"
+                value={bareUrl(profile.linkedin)}
+                href={profile.linkedin}
               />
               <ChannelLink
                 label="GitHub Activity"
-                value="github.com/samir-45"
-                href="https://github.com/samir-45"
+                value={bareUrl(profile.github)}
+                href={profile.github}
               />
               <ChannelLink
                 label="X Profile"
-                value="x.com/mdmahinkhan621"
-                href="https://x.com/mdmahinkhan621"
+                value={bareUrl(profile.x)}
+                href={profile.x}
               />
               <div className="pt-2 text-xs font-mono text-ash flex items-center justify-between">
-                <span>LOCATION: DHAKA, BD</span>
-                <span>STATUS: AVAILABLE</span>
+                <span>LOCATION: {profile.locationShort.toUpperCase()}</span>
+                <span>STATUS: {profile.available ? 'AVAILABLE' : 'BOOKED'}</span>
               </div>
             </div>
 

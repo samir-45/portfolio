@@ -6,6 +6,7 @@ import { motion } from 'framer-motion';
 import { ChevronRight, Download, Mail } from 'lucide-react';
 import { FaGithub, FaLinkedin } from 'react-icons/fa';
 import { BsTwitterX } from 'react-icons/bs';
+import { profile } from '../data/profile';
 
 const About = () => {
   return (
@@ -28,7 +29,7 @@ const About = () => {
               <div className="relative w-9 h-9 rounded-[2px] overflow-hidden border border-graphite-hairline flex-shrink-0 bg-surface-base">
                 <Image
                   src="/assets/mahin-pic.webp"
-                  alt="Md Mahin Khan"
+                  alt={profile.name}
                   fill
                   className="object-cover object-top"
                   sizes="36px"
@@ -37,14 +38,16 @@ const About = () => {
                 <span className="absolute -bottom-0.5 -right-0.5 w-2.5 h-2.5 rounded-full bg-mint-signal border-2 border-paper-white" />
               </div>
               <div className="flex items-center gap-2">
-                <span className="font-display font-semibold text-sm text-obsidian tracking-tight">Md Mahin Khan</span>
+                <span className="font-display font-semibold text-sm text-obsidian tracking-tight">{profile.name}</span>
                 <span className="text-graphite-hairline">/</span>
-                <span className="text-xs font-mono text-smoke">Full-Stack Engineer</span>
+                <span className="text-xs font-mono text-smoke">{profile.role}</span>
               </div>
-              <span className="hidden sm:inline-flex items-center gap-1.5 ml-2 text-[11px] font-mono text-mint-signal">
-                <span className="w-1.5 h-1.5 rounded-full bg-mint-signal animate-pulse" />
-                Available 2026
-              </span>
+              {profile.available && (
+                <span className="hidden sm:inline-flex items-center gap-1.5 ml-2 text-[11px] font-mono text-mint-signal">
+                  <span className="w-1.5 h-1.5 rounded-full bg-mint-signal animate-pulse" />
+                  {profile.availabilityLabel}
+                </span>
+              )}
             </motion.div>
 
             {/* Display Headline: Option A */}
@@ -54,8 +57,8 @@ const About = () => {
               transition={{ duration: 0.4, delay: 0.05 }}
               className="font-display text-2xl sm:text-3xl lg:text-[38px] xl:text-[42px] leading-[1.2] sm:leading-[1.15] text-obsidian tracking-[-0.02em] mb-7 hyphens-none text-balance"
             >
-              Crafting high-conversion web platforms where Figma precision meets{' '}
-              <span className="gradient-text font-normal">production-grade code.</span>
+              {profile.headline}{' '}
+              <span className="gradient-text font-normal">{profile.headlineAccent}</span>
             </motion.h1>
 
             {/* Subtext: Focused on Engineering Ownership */}
@@ -65,11 +68,11 @@ const About = () => {
               transition={{ duration: 0.4, delay: 0.1 }}
               className="text-smoke text-sm sm:text-base leading-relaxed max-w-xl mb-7 font-sans"
             >
-              <strong className="text-obsidian font-medium">Md Mahin Khan</strong> — Frontend-focused Full-Stack Engineer at{' '}
+              <strong className="text-obsidian font-medium">{profile.name}</strong> — {profile.introRole} at{' '}
               <span className="text-obsidian underline decoration-graphite-hairline underline-offset-4 font-medium">
-                SM Technology
+                {profile.company}
               </span>
-              . Transforming complex UI/UX designs into fast, accessible web applications paired with Node.js/Express APIs, JWT role access, and reliable Stripe payment flows.
+              . {profile.intro}
             </motion.p>
 
             {/* Engineering Status Metadata Strip */}
@@ -79,13 +82,15 @@ const About = () => {
               transition={{ duration: 0.4, delay: 0.15 }}
               className="flex flex-wrap items-center gap-x-6 gap-y-2 py-3 mb-8 border-y border-graphite-hairline text-xs font-mono text-smoke w-full"
             >
-              <span className="flex items-center gap-1.5 text-obsidian font-medium">
-                <span className="w-2 h-2 rounded-full bg-mint-signal inline-block" />
-                AVAILABLE FOR HIRE
-              </span>
-              <span>LOC: DHAKA (UTC+6)</span>
-              <span>ROLE: SM TECHNOLOGY</span>
-              <span>STACK: REACT 19 / NEXT 15 / TS</span>
+              {profile.available && (
+                <span className="flex items-center gap-1.5 text-obsidian font-medium">
+                  <span className="w-2 h-2 rounded-full bg-mint-signal inline-block" />
+                  AVAILABLE FOR HIRE
+                </span>
+              )}
+              <span>LOC: {profile.location.split(',')[0].toUpperCase()} ({profile.timezone})</span>
+              <span>ROLE: {profile.company.toUpperCase()}</span>
+              <span>STACK: {profile.stack.toUpperCase()}</span>
             </motion.div>
 
             {/* Dual CTAs adhering to Render style: Primary Dark + Ghost Outline */}
@@ -105,7 +110,7 @@ const About = () => {
               </a>
 
               <a
-                href="https://drive.google.com/file/d/1LzH7eElLAZ0IkVMNHkZbICXZSxUU9DQg/view?usp=sharing"
+                href={profile.resumeUrl}
                 target="_blank"
                 rel="noreferrer"
                 className="inline-flex items-center gap-1.5 px-3 py-2.5 text-xs font-mono text-smoke hover:text-obsidian transition-colors"
@@ -118,10 +123,10 @@ const About = () => {
             {/* Monochrome Hairline Social Badges */}
             <div className="flex flex-wrap items-center gap-2 mt-8 pt-6 border-t border-graphite-hairline w-full">
               <span className="text-xs font-mono text-ash uppercase tracking-wider mr-2">Endpoints:</span>
-              <SocialIconLink href="https://github.com/samir-45" label="GitHub" icon={<FaGithub size={14} />} />
-              <SocialIconLink href="https://www.linkedin.com/in/devmahin" label="LinkedIn" icon={<FaLinkedin size={14} />} />
-              <SocialIconLink href="https://x.com/mdmahinkhan621" label="X" icon={<BsTwitterX size={12} />} />
-              <SocialIconLink href="mailto:mdmahinkhan621@gmail.com" label="Email" icon={<Mail size={14} />} />
+              <SocialIconLink href={profile.github} label="GitHub" icon={<FaGithub size={14} />} />
+              <SocialIconLink href={profile.linkedin} label="LinkedIn" icon={<FaLinkedin size={14} />} />
+              <SocialIconLink href={profile.x} label="X" icon={<BsTwitterX size={12} />} />
+              <SocialIconLink href={`mailto:${profile.email}`} label="Email" icon={<Mail size={14} />} />
             </div>
 
           </div>
@@ -147,7 +152,7 @@ const About = () => {
                 <div className="relative w-full h-64 sm:h-72">
                   <Image
                     src="/assets/mahin-pic.webp"
-                    alt="Md Mahin Khan - Frontend & Full-Stack Engineer"
+                    alt={`${profile.name} - ${profile.title}`}
                     fill
                     className="object-cover object-[50%_20%]"
                     sizes="(max-width: 768px) 100vw, 420px"
@@ -158,11 +163,11 @@ const About = () => {
                     <div className="w-full">
                       <div className="flex items-center justify-between gap-2">
                         <h2 className="font-display text-lg font-semibold tracking-tight text-white">
-                          Md Mahin Khan
+                          {profile.name}
                         </h2>
                       </div>
                       <p className="text-zinc-200 text-[13px] mt-0.5">
-                        Frontend &amp; Full-Stack Specialist · Dhaka, BD
+                        {profile.title} · {profile.locationShort}
                       </p>
                     </div>
                   </div>
@@ -172,15 +177,15 @@ const About = () => {
                 <div className="grid grid-cols-3 divide-x divide-graphite-hairline bg-paper-white py-2.5 px-3 text-center text-xs font-mono">
                   <div>
                     <span className="text-[11px] text-ash block">ORGANIZATION</span>
-                    <span className="text-obsidian font-semibold text-[11px]">SM Tech</span>
+                    <span className="text-obsidian font-semibold text-[11px]">{profile.companyShort}</span>
                   </div>
                   <div>
                     <span className="text-[11px] text-ash block">DELIVERED</span>
-                    <span className="text-obsidian font-semibold text-[11px]">10+ Projs</span>
+                    <span className="text-obsidian font-semibold text-[11px]">{profile.stats.delivered}</span>
                   </div>
                   <div>
                     <span className="text-[11px] text-ash block">COMMITS</span>
-                    <span className="text-plasma-violet font-semibold text-[11px]">500+</span>
+                    <span className="text-plasma-violet font-semibold text-[11px]">{profile.stats.commits}</span>
                   </div>
                 </div>
               </div>
@@ -189,7 +194,7 @@ const About = () => {
               <div className="p-3.5 rounded-[2px] bg-paper-white border border-graphite-hairline">
                 <div className="flex items-center justify-between">
                   <span className="font-mono text-xs font-medium text-obsidian flex items-center gap-1.5">
-                    <span className="text-plasma-violet font-semibold">sys:</span> irendity-marketplace
+                    <span className="text-plasma-violet font-semibold">sys:</span> {profile.featuredProject}
                   </span>
                   <span className="inline-flex items-center px-2 py-0.5 rounded-[937px] bg-mint-signal/15 text-mint-signal font-mono text-[11px] font-medium">
                     LIVE

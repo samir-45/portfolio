@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Download } from "lucide-react";
 import { ModeToggle } from "./theme/mode-toggle";
+import { profile } from "../data/profile";
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -78,7 +79,7 @@ const Header = () => {
 
           {/* Pill Navigation CTA */}
           <a
-            href="https://drive.google.com/file/d/1LzH7eElLAZ0IkVMNHkZbICXZSxUU9DQg/view?usp=sharing"
+            href={profile.resumeUrl}
             target="_blank"
             rel="noreferrer"
             className="btn-pill inline-flex items-center gap-2"
@@ -137,7 +138,7 @@ const Header = () => {
                   Get in touch
                 </a>
                 <a
-                  href="https://drive.google.com/file/d/1LzH7eElLAZ0IkVMNHkZbICXZSxUU9DQg/view?usp=sharing"
+                  href={profile.resumeUrl}
                   target="_blank"
                   rel="noreferrer"
                   className="btn-pill w-full justify-center"

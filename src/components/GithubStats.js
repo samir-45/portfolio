@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 import { FaGithub, FaCodeBranch } from 'react-icons/fa';
 import { GitCommit, Terminal, ExternalLink, Activity, Sparkles, Layers } from 'lucide-react';
 import Image from 'next/image';
+import { profile } from '../data/profile';
 
 const GithubStats = () => {
   const [gitStats, setGitStats] = useState({
@@ -88,7 +89,7 @@ const GithubStats = () => {
                 </div>
 
                 <a
-                  href="https://github.com/samir-45"
+                  href={profile.github}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center justify-center gap-1.5 px-3 py-1.5 rounded-[2px] border border-graphite-hairline hover:border-obsidian text-xs font-mono text-obsidian transition-colors self-start sm:self-auto flex-shrink-0"
@@ -102,7 +103,7 @@ const GithubStats = () => {
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 sm:gap-3 mb-5 w-full min-w-0">
                 <MetricBox
                   label="COMMITS"
-                  value="500+"
+                  value={profile.stats.commits}
                   sub="production"
                 />
                 <MetricBox

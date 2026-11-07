@@ -1,9 +1,10 @@
 import './globals.css';
 import { Providers } from './providers';
+import { profile } from '../src/data/profile';
 
 export const metadata = {
   title: 'Md Mahin Khan | Frontend & Full-Stack Engineer',
-  description: 'Frontend-focused Full-Stack Engineer at SM Technology. Crafting high-conversion web platforms where Figma precision meets production-grade Next.js & Node.js code.',
+  description: profile.seoDescription,
   keywords: ['Md Mahin Khan', 'Mahin Khan', 'Frontend Engineer', 'Full Stack Developer', 'React.js', 'Next.js 15', 'TypeScript', 'SM Technology', 'Portfolio'],
   authors: [{ name: 'Md Mahin Khan', url: 'https://mahin-portfolio-site.netlify.app/' }],
   metadataBase: new URL('https://mahin-portfolio-site.netlify.app/'),
@@ -31,12 +32,12 @@ export const metadata = {
 const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'Person',
-  name: 'Md Mahin Khan',
+  name: profile.name,
   url: 'https://mahin-portfolio-site.netlify.app/',
   sameAs: [
-    'https://github.com/samir-45',
-    'https://www.linkedin.com/in/devmahin',
-    'https://x.com/mdmahinkhan621',
+    profile.github,
+    profile.linkedin,
+    profile.x,
   ],
   jobTitle: 'Frontend Developer',
   description: 'Portfolio website of Md Mahin Khan, Frontend & Full-Stack Developer.',

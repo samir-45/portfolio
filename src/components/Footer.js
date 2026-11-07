@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { ArrowUp } from 'lucide-react';
+import { profile } from '../data/profile';
 
 const Footer = () => {
   const scrollToTop = () => {
@@ -42,7 +43,7 @@ const Footer = () => {
                 MK
               </div>
               <span className="font-mono text-sm font-semibold text-obsidian">
-                Md Mahin Khan
+                {profile.name}
               </span>
             </div>
 
@@ -52,7 +53,7 @@ const Footer = () => {
             </p>
 
             <div className="pt-2 text-xs font-mono text-ash">
-              <span>LOCATION: DHAKA, BANGLADESH</span>
+              <span>LOCATION: {profile.location.toUpperCase()}</span>
             </div>
           </div>
 
@@ -95,22 +96,22 @@ const Footer = () => {
             </h4>
             <ul className="space-y-0.5 text-smoke">
               <li>
-                <a href="https://github.com/samir-45" target="_blank" rel="noopener noreferrer" className="inline-block py-1.5 hover:text-obsidian transition-colors">
+                <a href={profile.github} target="_blank" rel="noopener noreferrer" className="inline-block py-1.5 hover:text-obsidian transition-colors">
                   GitHub ↗
                 </a>
               </li>
               <li>
-                <a href="https://www.linkedin.com/in/devmahin" target="_blank" rel="noopener noreferrer" className="inline-block py-1.5 hover:text-obsidian transition-colors">
+                <a href={profile.linkedin} target="_blank" rel="noopener noreferrer" className="inline-block py-1.5 hover:text-obsidian transition-colors">
                   LinkedIn ↗
                 </a>
               </li>
               <li>
-                <a href="https://x.com/mdmahinkhan621" target="_blank" rel="noopener noreferrer" className="inline-block py-1.5 hover:text-obsidian transition-colors">
+                <a href={profile.x} target="_blank" rel="noopener noreferrer" className="inline-block py-1.5 hover:text-obsidian transition-colors">
                   X (Twitter) ↗
                 </a>
               </li>
               <li>
-                <a href="mailto:mdmahinkhan621@gmail.com" className="inline-block py-1.5 hover:text-obsidian transition-colors">
+                <a href={`mailto:${profile.email}`} className="inline-block py-1.5 hover:text-obsidian transition-colors">
                   Email Dispatch ↗
                 </a>
               </li>
@@ -121,7 +122,7 @@ const Footer = () => {
 
         {/* Bottom Metadata Bar */}
         <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-ash text-center sm:text-left">
-          <p>© {new Date().getFullYear()} Md Mahin Khan. Built with Render design tokens.</p>
+          <p>© {new Date().getFullYear()} {profile.name}. Built with Render design tokens.</p>
           <p className="flex items-center gap-1.5">
             <span>Designed with precision</span>
             <span className="text-plasma-violet">●</span>
